@@ -50,11 +50,11 @@ A comprehensive checklist for implementing Teehive v1, organized by phase, chunk
 
 ### Chunk 2.2: Express Server Entrypoint
 
-- [ ]  Install `typescript`, `ts-node-dev`, `express`, `@types/express` in `backend/`.
-- [ ]  Create `backend/src/index.ts`:
+- [x]  Install `typescript`, `ts-node-dev`, `express`, `@types/express` in `backend/`.
+- [x]  Create `backend/src/index.ts`:
     - Initialize Express app.
     - Import and connect Prisma client.
-- [ ]  Add scripts in `backend/package.json`:
+- [x]  Add scripts in `backend/package.json`:
     
     ```json
     "dev": "ts-node-dev src/index.ts",
@@ -62,15 +62,15 @@ A comprehensive checklist for implementing Teehive v1, organized by phase, chunk
     
     ```
     
-- [ ]  Commit entrypoint code.
+- [x]  Commit entrypoint code.
 
 ### Chunk 2.3: Database Connection & Health Endpoint
 
-- [ ]  In `src/index.ts`, define `GET /health` returning `200 { status: 'ok' }`.
-- [ ]  Install `supertest`, `@types/supertest`.
-- [ ]  Write Jest test `backend/tests/health.test.ts` using `supertest`.
-- [ ]  Ensure test passes.
-- [ ]  Commit health endpoint and tests.
+- [x]  In `src/index.ts`, define `GET /health` returning `200 { status: 'ok' }`.
+- [x]  Install `supertest`, `@types/supertest`.
+- [x]  Write Jest test `backend/tests/health.test.ts` using `supertest`.
+- [x]  Ensure test passes.
+- [x]  Commit health endpoint and tests.
 
 ---
 
