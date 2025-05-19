@@ -1,0 +1,17 @@
+{
+  "name": "teehive",
+  "version": "0.1.0",
+  "private": true,
+  "workspaces": [
+    "backend",
+    "mobile",
+    "shared"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace=backend & npm run dev --workspace=mobile",
+    "test": "jest scripts/test-monorepo.test.js"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+} 
