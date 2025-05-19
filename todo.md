@@ -41,12 +41,12 @@ A comprehensive checklist for implementing Teehive v1, organized by phase, chunk
 
 ### Chunk 2.1: Prisma Schema & Migrations
 
-- [ ]  In `backend/`, install `prisma` & `@prisma/client`.
-- [ ]  Add `prisma/schema.prisma` with models `TeeTime`, `UploadLog`.
-- [ ]  Create `.env.development` with `DATABASE_URL`.
-- [ ]  Run `npx prisma migrate dev --name init`.
-- [ ]  Verify tables exist in PostgreSQL.
-- [ ]  Commit Prisma schema and migration files.
+- [x]  In `backend/`, install `prisma` & `@prisma/client`.
+- [x]  Add `prisma/schema.prisma` with models `TeeTime`, `UploadLog`.
+- [x]  Create `.env.development` with `DATABASE_URL`.
+- [x]  Run `npx prisma migrate dev --name init`.
+- [x]  Verify tables exist in PostgreSQL.
+- [x]  Commit Prisma schema and migration files.
 
 ### Chunk 2.2: Express Server Entrypoint
 
