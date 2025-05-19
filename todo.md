@@ -8,21 +8,21 @@ A comprehensive checklist for implementing Teehive v1, organized by phase, chunk
 
 ### Chunk 1.1: Monorepo Initialization
 
-- [ ]  Create a new GitHub repository and clone it locally.
-- [ ]  Create directories: `backend/`, `mobile/`, `shared/`, `scripts/`, `.github/`, `docs/`.
-- [ ]  Run `npm init -y` at root and add workspaces:
+- [x]  Create a new GitHub repository and clone it locally.
+- [x]  Create directories: `backend/`, `mobile/`, `shared/`, `scripts/`, `.github/`, `docs/`.
+- [x]  Run `npm init -y` at root and add workspaces:
     
     ```json
     "workspaces": ["backend", "mobile", "shared"]
     
     ```
     
-- [ ]  Create empty `package.json` in `backend/` and `mobile/`.
-- [ ]  Commit the initial project structure.
+- [x]  Create empty `package.json` in `backend/` and `mobile/`.
+- [x]  Commit the initial project structure.
 
 ### Chunk 1.2: Workspace & Dependency Setup
 
-- [ ]  Verify `workspaces` config in root `package.json`.
+- [x]  Verify `workspaces` config in root `package.json`.
 - [ ]  Add or initialize `shared/` package for common TypeScript types (if needed).
 - [ ]  Install in `backend/`: `typescript`, `prisma`, `@prisma/client`, `express`, `ts-node-dev`, `@types/express`.
 - [ ]  Install in `mobile/`: `expo`, `react-native-paper`, `dotenv`, `expo-constants`.
@@ -159,7 +159,7 @@ A comprehensive checklist for implementing Teehive v1, organized by phase, chunk
 ### Chunk 5.3: Tee Times List Screen (Mock Data)
 
 - [ ]  Create `mobile/screens/TeeTimesList.tsx` with React Native Paper `FlatList`.
-- [ ]  Format date/time as “Mon, Jun 1 • 2:30 PM”.
+- [ ]  Format date/time as "Mon, Jun 1 • 2:30 PM".
 - [ ]  Style course name bold, price right-aligned, subtitle spots/holes.
 - [ ]  Write snapshot test `mobile/__tests__/TeeTimesList.test.tsx`.
 - [ ]  Commit component and test.
@@ -185,7 +185,7 @@ A comprehensive checklist for implementing Teehive v1, organized by phase, chunk
 ### Chunk 6.3: Error & Empty States
 
 - [ ]  Update `TeeTimesContainer` to show error message on fetch failure.
-- [ ]  Display “No tee times available right now.” for empty lists.
+- [ ]  Display "No tee times available right now." for empty lists.
 - [ ]  Write tests for both states.
 - [ ]  Commit updates and tests.
 
