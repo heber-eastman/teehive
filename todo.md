@@ -23,10 +23,10 @@ A comprehensive checklist for implementing Teehive v1, organized by phase, chunk
 ### Chunk 1.2: Workspace & Dependency Setup
 
 - [x]  Verify `workspaces` config in root `package.json`.
-- [ ]  Add or initialize `shared/` package for common TypeScript types (if needed).
-- [ ]  Install in `backend/`: `typescript`, `prisma`, `@prisma/client`, `express`, `ts-node-dev`, `@types/express`.
-- [ ]  Install in `mobile/`: `expo`, `react-native-paper`, `dotenv`, `expo-constants`.
-- [ ]  Run `npm install` at root and confirm all workspaces install correctly.
+- [x]  Add or initialize `shared/` package for common TypeScript types (if needed).
+- [x]  Install in `backend/`: `typescript`, `prisma`, `@prisma/client`, `express`, `ts-node-dev`, `@types/express`.
+- [x]  Install in `mobile/`: `expo`, `react-native-paper`, `dotenv`, `expo-constants`.
+- [x]  Run `npm install` at root and confirm all workspaces install correctly.
 
 ### Chunk 1.3: CI/CD Workflow Scaffold
 
