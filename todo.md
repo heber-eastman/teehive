@@ -30,10 +30,10 @@ A comprehensive checklist for implementing Teehive v1, organized by phase, chunk
 
 ### Chunk 1.3: CI/CD Workflow Scaffold
 
-- [ ]  Create `.github/workflows/backend.yml` placeholder with job: checkout + install.
-- [ ]  Create `.github/workflows/mobile.yml` placeholder.
-- [ ]  Push to `main` and verify Actions trigger workflows.
-- [ ]  Commit CI/CD skeleton.
+- [x]  Create `.github/workflows/backend.yml` placeholder with job: checkout + install.
+- [x]  Create `.github/workflows/mobile.yml` placeholder.
+- [x]  Push to `main` and verify Actions trigger workflows.
+- [x]  Commit CI/CD skeleton.
 
 ---
 
