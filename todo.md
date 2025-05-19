@@ -1,0 +1,245 @@
+# Teehive Development Checklist
+
+A comprehensive checklist for implementing Teehive v1, organized by phase, chunk, and individual tasks. Mark each task as completed when done.
+
+---
+
+## Phase 1: Project Foundation
+
+### Chunk 1.1: Monorepo Initialization
+
+- [ ]  Create a new GitHub repository and clone it locally.
+- [ ]  Create directories: `backend/`, `mobile/`, `shared/`, `scripts/`, `.github/`, `docs/`.
+- [ ]  Run `npm init -y` at root and add workspaces:
+    
+    ```json
+    "workspaces": ["backend", "mobile", "shared"]
+    
+    ```
+    
+- [ ]  Create empty `package.json` in `backend/` and `mobile/`.
+- [ ]  Commit the initial project structure.
+
+### Chunk 1.2: Workspace & Dependency Setup
+
+- [ ]  Verify `workspaces` config in root `package.json`.
+- [ ]  Add or initialize `shared/` package for common TypeScript types (if needed).
+- [ ]  Install in `backend/`: `typescript`, `prisma`, `@prisma/client`, `express`, `ts-node-dev`, `@types/express`.
+- [ ]  Install in `mobile/`: `expo`, `react-native-paper`, `dotenv`, `expo-constants`.
+- [ ]  Run `npm install` at root and confirm all workspaces install correctly.
+
+### Chunk 1.3: CI/CD Workflow Scaffold
+
+- [ ]  Create `.github/workflows/backend.yml` placeholder with job: checkout + install.
+- [ ]  Create `.github/workflows/mobile.yml` placeholder.
+- [ ]  Push to `main` and verify Actions trigger workflows.
+- [ ]  Commit CI/CD skeleton.
+
+---
+
+## Phase 2: Backend Core
+
+### Chunk 2.1: Prisma Schema & Migrations
+
+- [ ]  In `backend/`, install `prisma` & `@prisma/client`.
+- [ ]  Add `prisma/schema.prisma` with models `TeeTime`, `UploadLog`.
+- [ ]  Create `.env.development` with `DATABASE_URL`.
+- [ ]  Run `npx prisma migrate dev --name init`.
+- [ ]  Verify tables exist in PostgreSQL.
+- [ ]  Commit Prisma schema and migration files.
+
+### Chunk 2.2: Express Server Entrypoint
+
+- [ ]  Install `typescript`, `ts-node-dev`, `express`, `@types/express` in `backend/`.
+- [ ]  Create `backend/src/index.ts`:
+    - Initialize Express app.
+    - Import and connect Prisma client.
+- [ ]  Add scripts in `backend/package.json`:
+    
+    ```json
+    "dev": "ts-node-dev src/index.ts",
+    "build": "tsc"
+    
+    ```
+    
+- [ ]  Commit entrypoint code.
+
+### Chunk 2.3: Database Connection & Health Endpoint
+
+- [ ]  In `src/index.ts`, define `GET /health` returning `200 { status: 'ok' }`.
+- [ ]  Install `supertest`, `@types/supertest`.
+- [ ]  Write Jest test `backend/tests/health.test.ts` using `supertest`.
+- [ ]  Ensure test passes.
+- [ ]  Commit health endpoint and tests.
+
+---
+
+## Phase 3: Admin Dashboard
+
+### Chunk 3.1: Google OAuth Integration
+
+- [ ]  Install `passport`, `passport-google-oauth20`, `express-session`, `@types/passport-google-oauth20`.
+- [ ]  Configure `express-session` (TTL=7 days, HttpOnly, Secure, SameSite=Lax).
+- [ ]  In `src/auth.ts`, set up Passport Google strategy with callback `/auth/google/callback`.
+- [ ]  In `src/index.ts`, mount session and auth routes.
+- [ ]  Write E2E test `backend/tests/auth.test.ts` mocking OAuth callback.
+- [ ]  Commit OAuth integration code.
+
+### Chunk 3.2: Multer File-Upload Form
+
+- [ ]  Install `multer`.
+- [ ]  In `src/admin.ts`, add `GET /admin` serving HTML form with `<input type="file" name="csv" />`.
+- [ ]  Add `POST /admin` using Multer memory storage.
+- [ ]  Write supertest `backend/tests/upload-form.test.ts` checking form presence.
+- [ ]  Commit upload form code and tests.
+
+### Chunk 3.3: CSV Parsing & Validation Pipeline
+
+- [ ]  Install `csv-parse`.
+- [ ]  Create `src/utils/csvParser.ts` with streaming parser:
+    - Validate columns: `course_name`, `date_time`, `spots_available`, `price_amount`, `currency`, `holes`, `booking_url`.
+    - Convert `date_time` to UTC.
+    - Track valid rows and skipped count.
+- [ ]  Write unit tests `backend/tests/csv-parse.test.ts` for valid & invalid CSV.
+- [ ]  Commit parser and tests.
+
+### Chunk 3.4: Replace-All Transaction & UploadLog
+
+- [ ]  Create `src/services/uploadService.ts`:
+    - Begin Prisma transaction.
+    - Delete all `tee_times`.
+    - Bulk insert valid rows.
+    - Create `UploadLog` record.
+- [ ]  Write integration test `backend/tests/upload-transaction.test.ts`.
+- [ ]  Commit service and tests.
+
+---
+
+## Phase 4: Public API & Key
+
+### Chunk 4.1: `/v1/public/api-key` Endpoint
+
+- [ ]  In `src/routes/public.ts`, add `GET /v1/public/api-key` returning `{ apiKey }`.
+- [ ]  Write Jest test `backend/tests/apiKey.test.ts`.
+- [ ]  Commit public key endpoint.
+
+### Chunk 4.2: Static API-Key Storage & Rotation Logic
+
+- [ ]  Extend `schema.prisma` with `ApiKey` model; run migration.
+- [ ]  Create `scripts/rotateApiKey.ts` for random 32-char key generation & upsert.
+- [ ]  Write test `backend/tests/rotateApiKey.test.ts`.
+- [ ]  Commit rotation script and tests.
+
+### Chunk 4.3: API-Key Middleware
+
+- [ ]  Implement `src/middleware/apiKeyAuth.ts` to validate `Authorization` header.
+- [ ]  Apply middleware to `/v1/tee-times`.
+- [ ]  Write unit tests `backend/tests/authMiddleware.test.ts`.
+- [ ]  Commit middleware and tests.
+
+---
+
+## Phase 5: Mobile App Core
+
+### Chunk 5.1: Expo Scaffold with RN Paper
+
+- [ ]  Run `expo init mobile --template blank --npm`.
+- [ ]  Install `react-native-paper` & peer deps.
+- [ ]  Update `App.tsx` to render a Paper Button.
+- [ ]  Write Jest test `mobile/__tests__/App.test.tsx`.
+- [ ]  Commit scaffold and test.
+
+### Chunk 5.2: Environment Config via `.env`
+
+- [ ]  Install `dotenv` & `expo-constants`.
+- [ ]  Create `mobile/config.ts` loading `API_BASE_URL`, `BOOTSTRAP_PATH`.
+- [ ]  Write test `mobile/__tests__/config.test.ts`.
+- [ ]  Commit config utility and tests.
+
+### Chunk 5.3: Tee Times List Screen (Mock Data)
+
+- [ ]  Create `mobile/screens/TeeTimesList.tsx` with React Native Paper `FlatList`.
+- [ ]  Format date/time as “Mon, Jun 1 • 2:30 PM”.
+- [ ]  Style course name bold, price right-aligned, subtitle spots/holes.
+- [ ]  Write snapshot test `mobile/__tests__/TeeTimesList.test.tsx`.
+- [ ]  Commit component and test.
+
+---
+
+## Phase 6: Integration & Wiring
+
+### Chunk 6.1: Fetch Bootstrap Key & Cache Logic
+
+- [ ]  Install `@react-native-async-storage/async-storage`.
+- [ ]  Create `mobile/hooks/useApiKey.ts` to fetch and cache key, retry on 401.
+- [ ]  Write test `mobile/__tests__/useApiKey.test.ts`.
+- [ ]  Commit hook and tests.
+
+### Chunk 6.2: Fetch & Display Tee Times
+
+- [ ]  Implement `mobile/hooks/useTeeTimes.ts` using `useApiKey()`.
+- [ ]  Create `mobile/components/TeeTimesContainer.tsx` for fetching and rendering.
+- [ ]  Write test `mobile/__tests__/useTeeTimes.test.ts`.
+- [ ]  Commit hook, container, and test.
+
+### Chunk 6.3: Error & Empty States
+
+- [ ]  Update `TeeTimesContainer` to show error message on fetch failure.
+- [ ]  Display “No tee times available right now.” for empty lists.
+- [ ]  Write tests for both states.
+- [ ]  Commit updates and tests.
+
+---
+
+## Phase 7: Testing & Quality
+
+### Chunk 7.1: Backend Jest Tests
+
+- [ ]  Add `backend/jest.config.js` for TypeScript.
+- [ ]  Add tests for CSV parser, auth middleware, health endpoint.
+- [ ]  Set coverage threshold to 80%.
+- [ ]  Commit Jest config and tests.
+
+### Chunk 7.2: Mobile Jest Tests
+
+- [ ]  Add `mobile/jest.config.js` with React Native preset.
+- [ ]  Write tests: App smoke, TeeTimesList, config hook.
+- [ ]  Ensure mobile tests run on CI.
+- [ ]  Commit Jest config and tests.
+
+### Chunk 7.3: ESLint & Prettier + Pre-commit Hooks
+
+- [ ]  Install `eslint`, `prettier`, `eslint-config-prettier`, `eslint-config-recommended`.
+- [ ]  Create `.eslintrc.js` and `.prettierrc`.
+- [ ]  Install `husky` and `lint-staged`.
+- [ ]  Configure `.husky/pre-commit` for lint-staged running `eslint --fix` and `prettier --write`.
+- [ ]  Commit linting/formatting setup.
+
+---
+
+## Phase 8: CI/CD & Delivery
+
+### Chunk 8.1: Backend GitHub Action
+
+- [ ]  In `.github/workflows/backend.yml`:
+    - Set trigger on `push` to `main`, runner `ubuntu-latest`.
+    - Steps: checkout, install, test, build Docker, deploy (Railway), `prisma migrate deploy`.
+- [ ]  Commit workflow file.
+
+### Chunk 8.2: Mobile GitHub Action
+
+- [ ]  In `.github/workflows/mobile.yml`:
+    - Trigger on `push` to `main`, runner `macos-latest`.
+    - Steps: checkout, install, test, Fastlane match, Fastlane build, upload IPA/APK artifacts.
+- [ ]  Commit workflow file.
+
+### Chunk 8.3: Fastlane Match Integration
+
+- [ ]  Add `Fastfile` under `.github/fastlane` with lanes for iOS & Android signing via `match`.
+- [ ]  Reference GitHub Actions secrets `MATCH_GIT_TOKEN`, `FASTLANE_MATCH_PASSWORD`.
+- [ ]  Write minimal script/test to confirm `fastlane match` success.
+- [ ]  Commit Fastlane configuration and test.
+
+---
+
+**Completion of all items** will deliver a fully functional Teehive v1 prototype.
