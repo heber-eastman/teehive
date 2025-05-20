@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSV Upload Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .container {
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        .result {
+            margin-top: 20px;
+            white-space: pre-wrap;
+            background-color: #f5f5f5;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .error {
+            color: red;
+        }
+        .success {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>CSV Upload Test</h1>
+        <p>Upload a CSV file with the following columns:</p>
+        <ul>
+            <li>name (required, letters and spaces only)</li>
+            <li>age (required, number between 0 and 120)</li>
+            <li>email (required, valid email format)</li>
+            <li>isActive (optional, boolean)</li>
+        </ul>
+        <form id="uploadForm">
+            <input type="file" id="csvFile" accept=".csv" required>
+            <button type="submit">Upload and Parse</button>
+        </form>
+        <div id="result" class="result"></div>
+    </div>
+
+    <script>
+        document.getElementById('uploadForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const fileInput = document.getElementById('csvFile');
+            const resultDiv = document.getElementById('result');
+            
+            if (!fileInput.files.length) {
+                resultDiv.innerHTML = '<span class="error">Please select a file</span>';
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append('file', fileInput.files[0]);
+
+            try {
+                resultDiv.textContent = 'Processing...';
+                const response = await fetch('/api/test/csv-upload', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const data = await response.json();
+                
+                if (!response.ok) {
+                    throw new Error(data.error || 'Failed to process CSV');
+                }
+
+                let resultHtml = '<h3>Results:</h3>';
+                resultHtml += `<p>Total Rows: ${data.totalRows}</p>`;
+                resultHtml += `<p class="success">Valid Rows: ${data.validRows.length}</p>`;
+                resultHtml += `<p class="error">Invalid Rows: ${data.invalidRows.length}</p>`;
+
+                if (data.invalidRows.length > 0) {
+                    resultHtml += '<h4>Invalid Rows Details:</h4>';
+                    data.invalidRows.forEach(row => {
+                        resultHtml += `<p>Row ${row.row}: ${row.errors.join(', ')}</p>`;
+                    });
+                }
+
+                if (data.validRows.length > 0) {
+                    resultHtml += '<h4>Valid Rows:</h4>';
+                    resultHtml += '<pre>' + JSON.stringify(data.validRows, null, 2) + '</pre>';
+                }
+
+                resultDiv.innerHTML = resultHtml;
+            } catch (error) {
+                resultDiv.innerHTML = `<span class="error">Error: ${error.message}</span>`;
+            }
+        });
+    </script>
+</body>
+</html> 

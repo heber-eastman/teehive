@@ -26,6 +26,8 @@ import session from 'express-session';
 import { sessionConfig, configurePassport, isAuthenticated } from './auth';
 import { User } from './types';
 import adminRouter from './admin';
+import multer from 'multer';
+import { parseCSV, ColumnDefinition } from './utils/csvParser';
 
 const app = express();
 const prisma = new PrismaClient();
@@ -37,8 +39,50 @@ app.use(session(sessionConfig));
 app.use(passport.initialize());
 app.use(passport.session());
 
+// Serve static files from public directory
+app.use(express.static(path.join(__dirname, '..', 'public')));
+
 // Configure Passport
 configurePassport();
+
+// Configure multer for memory storage
+const upload = multer({ storage: multer.memoryStorage() });
+
+// Define column definitions for testing
+const testColumns: ColumnDefinition[] = [
+  {
+    name: 'name',
+    validation: {
+      type: 'string',
+      required: true,
+      pattern: /^[A-Za-z\s]+$/,
+    },
+  },
+  {
+    name: 'age',
+    validation: {
+      type: 'number',
+      required: true,
+      min: 0,
+      max: 120,
+    },
+  },
+  {
+    name: 'email',
+    validation: {
+      type: 'string',
+      required: true,
+      pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+    },
+  },
+  {
+    name: 'isActive',
+    validation: {
+      type: 'boolean',
+      required: false,
+    },
+  },
+];
 
 // Health check endpoint
 app.get('/health', (req, res) => {
@@ -65,6 +109,21 @@ app.get('/api/me', isAuthenticated, (req, res) => {
 
 // Mount admin routes
 app.use('/', adminRouter);
+
+// Add test endpoint for CSV upload
+app.post('/api/test/csv-upload', upload.single('file'), async (req, res) => {
+  try {
+    if (!req.file) {
+      return res.status(400).json({ error: 'No file uploaded' });
+    }
+
+    const result = await parseCSV(req.file.buffer, testColumns);
+    res.json(result);
+  } catch (error) {
+    console.error('CSV parsing error:', error);
+    res.status(500).json({ error: 'Failed to parse CSV file' });
+  }
+});
 
 // Connect to database and start server
 async function startServer() {

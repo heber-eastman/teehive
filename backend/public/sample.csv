@@ -1,0 +1,7 @@
+name,age,email,isActive
+John Doe,30,john@example.com,true
+Jane Smith,25,jane@example.com,false
+Invalid Name 123,150,invalid-email,maybe
+Alice Brown,35,alice@example.com,
+Bob Wilson,abc,bob@example.com,true
+,40,missing-name@example.com,true 
