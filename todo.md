@@ -85,7 +85,23 @@ A comprehensive checklist for implementing Teehive v1, organized by phase, chunk
 - [x]  Write E2E test `backend/tests/auth.test.ts` mocking OAuth callback.
 - [x]  Commit OAuth integration code.
 
-### Chunk 3.2: Multer File-Upload Form
+### Chunk 3.2: Environment Variables & Configuration
+
+- [x]  Install `dotenv` and configure environment variables loading
+- [x]  Create `.env` file with required variables:
+    - DATABASE_URL
+    - SESSION_SECRET
+    - GOOGLE_CLIENT_ID
+    - GOOGLE_CLIENT_SECRET
+    - PORT
+- [x]  Create `.env.development` for test environment
+- [x]  Fix environment variables loading in `index.ts`
+- [x]  Configure Google OAuth credentials
+- [x]  Set up database connection
+- [x]  Write and pass tests for environment configuration
+- [x]  Commit all configuration changes
+
+### Chunk 3.3: Multer File-Upload Form
 
 - [ ]  Install `multer`.
 - [ ]  In `src/admin.ts`, add `GET /admin` serving HTML form with `<input type="file" name="csv" />`.
@@ -93,7 +109,7 @@ A comprehensive checklist for implementing Teehive v1, organized by phase, chunk
 - [ ]  Write supertest `backend/tests/upload-form.test.ts` checking form presence.
 - [ ]  Commit upload form code and tests.
 
-### Chunk 3.3: CSV Parsing & Validation Pipeline
+### Chunk 3.4: CSV Parsing & Validation Pipeline
 
 - [ ]  Install `csv-parse`.
 - [ ]  Create `src/utils/csvParser.ts` with streaming parser:
