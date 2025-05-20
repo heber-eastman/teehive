@@ -1,13 +1,31 @@
+// Load environment variables first
+import { config } from 'dotenv';
+import path from 'path';
+import fs from 'fs';
+
+const envPath = path.resolve(__dirname, '..', '.env');
+console.log('Loading .env from:', envPath);
+console.log('File exists:', fs.existsSync(envPath));
+
+if (fs.existsSync(envPath)) {
+  const result = config({ path: envPath });
+  console.log('Dotenv config result:', result);
+}
+
+// Force reload environment variables
+process.env.GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
+process.env.GOOGLE_CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET;
+process.env.SESSION_SECRET = process.env.SESSION_SECRET;
+process.env.DATABASE_URL = process.env.DATABASE_URL;
+process.env.PORT = process.env.PORT;
+
 import express from 'express';
 import { PrismaClient } from '@prisma/client';
-import { config } from 'dotenv';
 import passport from 'passport';
 import session from 'express-session';
 import { sessionConfig, configurePassport, isAuthenticated } from './auth';
 import { User } from './types';
-
-// Load environment variables
-config();
+import adminRouter from './admin';
 
 const app = express();
 const prisma = new PrismaClient();
@@ -44,6 +62,9 @@ app.get('/api/me', isAuthenticated, (req, res) => {
   const user = req.user as User;
   res.json({ email: user.email });
 });
+
+// Mount admin routes
+app.use('/', adminRouter);
 
 // Connect to database and start server
 async function startServer() {

@@ -3,6 +3,15 @@ import { Strategy as GoogleStrategy } from 'passport-google-oauth20';
 import session from 'express-session';
 import { User } from './types';
 
+// Debug environment variables
+console.log('Environment variables in auth.ts:', {
+  GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID,
+  GOOGLE_CLIENT_SECRET: process.env.GOOGLE_CLIENT_SECRET,
+  SESSION_SECRET: process.env.SESSION_SECRET,
+  DATABASE_URL: process.env.DATABASE_URL ? 'exists' : 'undefined',
+  PORT: process.env.PORT
+});
+
 // Session configuration
 export const sessionConfig = {
   secret: process.env.SESSION_SECRET || 'your-secret-key',
@@ -18,11 +27,15 @@ export const sessionConfig = {
 
 // Passport configuration
 export function configurePassport() {
+  if (!process.env.GOOGLE_CLIENT_ID || !process.env.GOOGLE_CLIENT_SECRET) {
+    throw new Error('Google OAuth credentials are not configured');
+  }
+
   passport.use(
     new GoogleStrategy(
       {
-        clientID: process.env.GOOGLE_CLIENT_ID || '',
-        clientSecret: process.env.GOOGLE_CLIENT_SECRET || '',
+        clientID: process.env.GOOGLE_CLIENT_ID,
+        clientSecret: process.env.GOOGLE_CLIENT_SECRET,
         callbackURL: '/auth/google/callback',
       },
       (accessToken, refreshToken, profile, done) => {
