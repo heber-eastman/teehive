@@ -116,13 +116,13 @@ A comprehensive checklist for implementing Teehive v1, organized by phase, chunk
 
 ### Chunk 3.4: Replace-All Transaction & UploadLog
 
-- [ ]  Create `src/services/uploadService.ts`:
+- [x]  Create `src/services/uploadService.ts`:
     - Begin Prisma transaction.
     - Delete all `tee_times`.
     - Bulk insert valid rows.
-    - Create `UploadLog` record.
-- [ ]  Write integration test `backend/tests/upload-transaction.test.ts`.
-- [ ]  Commit service and tests.
+    - Create `UploadLog` record (with uploadedBy, totalRecords, validRecords, skippedRecords).
+- [x]  Write integration test `backend/tests/upload-transaction.test.ts`.
+- [x]  Commit service, migration, and tests.
 
 ---
 
