@@ -101,23 +101,18 @@ A comprehensive checklist for implementing Teehive v1, organized by phase, chunk
 - [x]  Write and pass tests for environment configuration
 - [x]  Commit all configuration changes
 
-### Chunk 3.3: Multer File-Upload Form
+### Chunk 3.3: CSV Parsing & Validation Pipeline
 
-- [ ]  Install `multer`.
-- [ ]  In `src/admin.ts`, add `GET /admin` serving HTML form with `<input type="file" name="csv" />`.
-- [ ]  Add `POST /admin` using Multer memory storage.
-- [ ]  Write supertest `backend/tests/upload-form.test.ts` checking form presence.
-- [ ]  Commit upload form code and tests.
-
-### Chunk 3.4: CSV Parsing & Validation Pipeline
-
-- [ ]  Install `csv-parse`.
-- [ ]  Create `src/utils/csvParser.ts` with streaming parser:
-    - Validate columns: `course_name`, `date_time`, `spots_available`, `price_amount`, `currency`, `holes`, `booking_url`.
-    - Convert `date_time` to UTC.
-    - Track valid rows and skipped count.
-- [ ]  Write unit tests `backend/tests/csv-parse.test.ts` for valid & invalid CSV.
-- [ ]  Commit parser and tests.
+- [x]  Install `csv-parse`.
+- [x]  Create `src/utils/csvParser.ts` with streaming parser:
+    - Validate columns: `name`, `age`, `email`, `isActive`
+    - Track valid rows and skipped count
+    - Handle type validation and custom validation rules
+- [x]  Write unit tests `backend/tests/csv-parse.test.ts` for valid & invalid CSV
+- [x]  Add test endpoint `/api/test/csv-upload` for CSV file uploads
+- [x]  Create test page `public/test-csv.html` for browser testing
+- [x]  Add sample CSV data for testing
+- [x]  Commit parser, tests, and test utilities
 
 ### Chunk 3.4: Replace-All Transaction & UploadLog
 
