@@ -24,13 +24,14 @@ model TeeTime {
 }
 
 model UploadLog {
-  id            String   @id @default(uuid())
-  fileName      String
-  uploadDate    DateTime @default(now())
-  totalRecords  Int
-  validRecords  Int
+  id             String   @id @default(uuid())
+  fileName       String
+  uploadDate     DateTime @default(now())
+  totalRecords   Int
+  validRecords   Int
   skippedRecords Int
-  errorMessage  String?
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
+  errorMessage   String?
+  uploadedBy     String?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
 } 
