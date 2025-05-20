@@ -78,12 +78,12 @@ A comprehensive checklist for implementing Teehive v1, organized by phase, chunk
 
 ### Chunk 3.1: Google OAuth Integration
 
-- [ ]  Install `passport`, `passport-google-oauth20`, `express-session`, `@types/passport-google-oauth20`.
-- [ ]  Configure `express-session` (TTL=7 days, HttpOnly, Secure, SameSite=Lax).
-- [ ]  In `src/auth.ts`, set up Passport Google strategy with callback `/auth/google/callback`.
-- [ ]  In `src/index.ts`, mount session and auth routes.
-- [ ]  Write E2E test `backend/tests/auth.test.ts` mocking OAuth callback.
-- [ ]  Commit OAuth integration code.
+- [x]  Install `passport`, `passport-google-oauth20`, `express-session`, `@types/passport-google-oauth20`.
+- [x]  Configure `express-session` (TTL=7 days, HttpOnly, Secure, SameSite=Lax).
+- [x]  In `src/auth.ts`, set up Passport Google strategy with callback `/auth/google/callback`.
+- [x]  In `src/index.ts`, mount session and auth routes.
+- [x]  Write E2E test `backend/tests/auth.test.ts` mocking OAuth callback.
+- [x]  Commit OAuth integration code.
 
 ### Chunk 3.2: Multer File-Upload Form
 
