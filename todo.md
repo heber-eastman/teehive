@@ -162,10 +162,10 @@ A comprehensive checklist for implementing Teehive v1, organized by phase, chunk
 
 ### Chunk 5.2: Environment Config via `.env`
 
-- [ ]  Install `dotenv` & `expo-constants`.
-- [ ]  Create `mobile/config.ts` loading `API_BASE_URL`, `BOOTSTRAP_PATH`.
-- [ ]  Write test `mobile/__tests__/config.test.ts`.
-- [ ]  Commit config utility and tests.
+- [x]  Install `dotenv` & `expo-constants`.
+- [x]  Create `mobile/config.ts` loading `API_BASE_URL`, `BOOTSTRAP_PATH`.
+- [x]  Write test `mobile/__tests__/config.test.ts`.
+- [x]  Commit config utility and tests.
 
 ### Chunk 5.3: Tee Times List Screen (Mock Data)
 
