@@ -130,9 +130,9 @@ A comprehensive checklist for implementing Teehive v1, organized by phase, chunk
 
 ### Chunk 4.1: `/v1/public/api-key` Endpoint
 
-- [ ]  In `src/routes/public.ts`, add `GET /v1/public/api-key` returning `{ apiKey }`.
-- [ ]  Write Jest test `backend/tests/apiKey.test.ts`.
-- [ ]  Commit public key endpoint.
+- [x]  In `src/routes/public.ts`, add `GET /v1/public/api-key` returning `{ apiKey }`.
+- [x]  Write Jest test `backend/tests/apiKey.test.ts`.
+- [x]  Commit public key endpoint.
 
 ### Chunk 4.2: Static API-Key Storage & Rotation Logic
 
