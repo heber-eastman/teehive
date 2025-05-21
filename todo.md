@@ -136,17 +136,17 @@ A comprehensive checklist for implementing Teehive v1, organized by phase, chunk
 
 ### Chunk 4.2: Static API-Key Storage & Rotation Logic
 
-- [ ]  Extend `schema.prisma` with `ApiKey` model; run migration.
-- [ ]  Create `scripts/rotateApiKey.ts` for random 32-char key generation & upsert.
-- [ ]  Write test `backend/tests/rotateApiKey.test.ts`.
-- [ ]  Commit rotation script and tests.
+- [x]  Extend `schema.prisma` with `ApiKey` model; run migration.
+- [x]  Create `scripts/rotateApiKey.ts` for random 32-char key generation & upsert.
+- [x]  Write test `backend/tests/rotateApiKey.test.ts`.
+- [x]  Commit rotation script and tests.
 
 ### Chunk 4.3: API-Key Middleware
 
-- [ ]  Implement `src/middleware/apiKeyAuth.ts` to validate `Authorization` header.
-- [ ]  Apply middleware to `/v1/tee-times`.
-- [ ]  Write unit tests `backend/tests/authMiddleware.test.ts`.
-- [ ]  Commit middleware and tests.
+- [x]  Implement `src/middleware/apiKeyAuth.ts` to validate `Authorization` header.
+- [x]  Apply middleware to `/v1/tee-times`.
+- [x]  Write unit tests `backend/tests/authMiddleware.test.ts`.
+- [x]  Commit middleware and tests.
 
 ---
 
