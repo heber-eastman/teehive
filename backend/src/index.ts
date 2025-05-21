@@ -26,6 +26,7 @@ import session from 'express-session';
 import { sessionConfig, configurePassport, isAuthenticated } from './auth';
 import { User } from './types';
 import adminRouter from './admin';
+import publicRouter from './routes/public';
 import multer from 'multer';
 import { parseCSV, ColumnDefinition } from './utils/csvParser';
 
@@ -109,6 +110,9 @@ app.get('/api/me', isAuthenticated, (req, res) => {
 
 // Mount admin routes
 app.use('/', adminRouter);
+
+// Mount public routes
+app.use('/v1/public', publicRouter);
 
 // Add test endpoint for CSV upload
 app.post('/api/test/csv-upload', upload.single('file'), async (req, res) => {
