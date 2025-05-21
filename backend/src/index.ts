@@ -27,6 +27,7 @@ import { sessionConfig, configurePassport, isAuthenticated } from './auth';
 import { User } from './types';
 import adminRouter from './admin';
 import publicRouter from './routes/public';
+import teeTimesRouter from './routes/teeTimes';
 import multer from 'multer';
 import { parseCSV, ColumnDefinition } from './utils/csvParser';
 
@@ -113,6 +114,9 @@ app.use('/', adminRouter);
 
 // Mount public routes
 app.use('/v1/public', publicRouter);
+
+// Mount tee times routes
+app.use('/v1/tee-times', teeTimesRouter);
 
 // Add test endpoint for CSV upload
 app.post('/api/test/csv-upload', upload.single('file'), async (req, res) => {
