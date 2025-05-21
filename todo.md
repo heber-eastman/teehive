@@ -154,11 +154,11 @@ A comprehensive checklist for implementing Teehive v1, organized by phase, chunk
 
 ### Chunk 5.1: Expo Scaffold with RN Paper
 
-- [ ]  Run `expo init mobile --template blank --npm`.
-- [ ]  Install `react-native-paper` & peer deps.
-- [ ]  Update `App.tsx` to render a Paper Button.
-- [ ]  Write Jest test `mobile/__tests__/App.test.tsx`.
-- [ ]  Commit scaffold and test.
+- [x]  Run `expo init mobile --template blank --npm`.
+- [x]  Install `react-native-paper` & peer deps.
+- [x]  Update `App.tsx` to render a Paper Button.
+- [x]  Write Jest test `mobile/__tests__/App.test.tsx`.
+- [x]  Commit scaffold and test.
 
 ### Chunk 5.2: Environment Config via `.env`
 
