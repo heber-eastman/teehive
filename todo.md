@@ -181,17 +181,17 @@ A comprehensive checklist for implementing Teehive v1, organized by phase, chunk
 
 ### Chunk 6.1: Fetch Bootstrap Key & Cache Logic
 
-- [ ]  Install `@react-native-async-storage/async-storage`.
-- [ ]  Create `mobile/hooks/useApiKey.ts` to fetch and cache key, retry on 401.
-- [ ]  Write test `mobile/__tests__/useApiKey.test.ts`.
-- [ ]  Commit hook and tests.
+- [x]  Install `@react-native-async-storage/async-storage`.
+- [x]  Create `mobile/hooks/useApiKey.ts` to fetch and cache key, retry on 401.
+- [x]  Write test `mobile/__tests__/useApiKey.test.ts`.
+- [x]  Commit hook and tests.
 
-### Chunk 6.2: Fetch & Display Tee Times
+### Chunk 6.2: Fetch & Display Tee Times (Completed: 2024-03-20)
 
-- [ ]  Implement `mobile/hooks/useTeeTimes.ts` using `useApiKey()`.
-- [ ]  Create `mobile/components/TeeTimesContainer.tsx` for fetching and rendering.
-- [ ]  Write test `mobile/__tests__/useTeeTimes.test.ts`.
-- [ ]  Commit hook, container, and test.
+- [x]  Implement `mobile/hooks/useTeeTimes.ts` using `useApiKey()`.
+- [x]  Create `mobile/components/TeeTimesContainer.tsx` for fetching and rendering.
+- [x]  Write test `mobile/__tests__/useTeeTimes.test.ts`.
+- [x]  Commit hook, container, and test.
 
 ### Chunk 6.3: Error & Empty States
 
