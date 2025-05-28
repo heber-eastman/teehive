@@ -169,11 +169,11 @@ A comprehensive checklist for implementing Teehive v1, organized by phase, chunk
 
 ### Chunk 5.3: Tee Times List Screen (Mock Data)
 
-- [ ]  Create `mobile/screens/TeeTimesList.tsx` with React Native Paper `FlatList`.
-- [ ]  Format date/time as "Mon, Jun 1 • 2:30 PM".
-- [ ]  Style course name bold, price right-aligned, subtitle spots/holes.
-- [ ]  Write snapshot test `mobile/__tests__/TeeTimesList.test.tsx`.
-- [ ]  Commit component and test.
+- [x]  Create `mobile/screens/TeeTimesList.tsx` with React Native Paper `FlatList`.
+- [x]  Format date/time as "Mon, Jun 1 • 2:30 PM".
+- [x]  Style course name bold, price right-aligned, subtitle spots/holes.
+- [x]  Write snapshot test `mobile/__tests__/TeeTimesList.test.tsx`.
+- [x]  Commit component and test.
 
 ---
 
