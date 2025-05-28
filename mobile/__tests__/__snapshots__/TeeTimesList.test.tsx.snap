@@ -160,7 +160,25 @@ exports[`TeeTimesList renders correctly 1`] = `
                   ]
                 }
               >
-                <Text />
+                <Text
+                  accessibilityElementsHidden={true}
+                  importantForAccessibility="no-hide-descendants"
+                  pointerEvents="none"
+                  selectable={false}
+                  style={
+                    [
+                      {
+                        "backgroundColor": "transparent",
+                      },
+                      {
+                        "color": "rgba(73, 69, 79, 1)",
+                        "fontSize": 24,
+                      },
+                    ]
+                  }
+                >
+                  □
+                </Text>
               </View>
               <View
                 style={
@@ -356,7 +374,25 @@ exports[`TeeTimesList renders correctly 1`] = `
                   ]
                 }
               >
-                <Text />
+                <Text
+                  accessibilityElementsHidden={true}
+                  importantForAccessibility="no-hide-descendants"
+                  pointerEvents="none"
+                  selectable={false}
+                  style={
+                    [
+                      {
+                        "backgroundColor": "transparent",
+                      },
+                      {
+                        "color": "rgba(73, 69, 79, 1)",
+                        "fontSize": 24,
+                      },
+                    ]
+                  }
+                >
+                  □
+                </Text>
               </View>
               <View
                 style={
@@ -552,7 +588,25 @@ exports[`TeeTimesList renders correctly 1`] = `
                   ]
                 }
               >
-                <Text />
+                <Text
+                  accessibilityElementsHidden={true}
+                  importantForAccessibility="no-hide-descendants"
+                  pointerEvents="none"
+                  selectable={false}
+                  style={
+                    [
+                      {
+                        "backgroundColor": "transparent",
+                      },
+                      {
+                        "color": "rgba(73, 69, 79, 1)",
+                        "fontSize": 24,
+                      },
+                    ]
+                  }
+                >
+                  □
+                </Text>
               </View>
               <View
                 style={

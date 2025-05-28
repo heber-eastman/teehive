@@ -5,6 +5,6 @@ import App from '../App';
 describe('App', () => {
   it('renders correctly', () => {
     const { getByText } = render(<App />);
-    expect(getByText('Hello World')).toBeTruthy();
+    expect(getByText('Pine Valley Golf Club')).toBeTruthy();
   });
 }); 
