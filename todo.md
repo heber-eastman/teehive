@@ -195,10 +195,10 @@ A comprehensive checklist for implementing Teehive v1, organized by phase, chunk
 
 ### Chunk 6.3: Error & Empty States
 
-- [ ]  Update `TeeTimesContainer` to show error message on fetch failure.
-- [ ]  Display "No tee times available right now." for empty lists.
-- [ ]  Write tests for both states.
-- [ ]  Commit updates and tests.
+- [x]  Update `TeeTimesContainer` to show error message on fetch failure.
+- [x]  Display "No tee times available right now." for empty lists.
+- [x]  Write tests for both states.
+- [x]  Commit updates and tests.
 
 ---
 
