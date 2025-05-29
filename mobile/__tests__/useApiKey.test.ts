@@ -28,6 +28,8 @@ describe('useApiKey', () => {
     const mockApiKey = 'test-api-key';
     mockFetch.mockResolvedValueOnce({
       ok: true,
+      status: 200,
+      headers: new Headers(),
       json: () => Promise.resolve({ apiKey: mockApiKey }),
     });
 
@@ -86,6 +88,8 @@ describe('useApiKey', () => {
     const newApiKey = 'new-api-key';
     mockFetch.mockResolvedValueOnce({
       ok: true,
+      status: 200,
+      headers: new Headers(),
       json: () => Promise.resolve({ apiKey: newApiKey }),
     });
 

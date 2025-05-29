@@ -16,11 +16,50 @@ jest.mock('react-native-paper', () => {
   };
 });
 
+const mockTeeTimes = [
+  {
+    id: '1',
+    courseName: 'Pine Valley Golf Club',
+    dateTime: '2024-03-20T10:00:00Z',
+    spotsAvailable: 4,
+    holes: 18,
+    priceAmount: 150,
+    currency: 'USD',
+    bookingUrl: 'https://example.com/book1',
+    createdAt: '2024-03-19T00:00:00Z',
+    updatedAt: '2024-03-19T00:00:00Z'
+  },
+  {
+    id: '2',
+    courseName: 'Augusta National',
+    dateTime: '2024-03-21T14:30:00Z',
+    spotsAvailable: 2,
+    holes: 18,
+    priceAmount: 200,
+    currency: 'USD',
+    bookingUrl: 'https://example.com/book2',
+    createdAt: '2024-03-19T00:00:00Z',
+    updatedAt: '2024-03-19T00:00:00Z'
+  },
+  {
+    id: '3',
+    courseName: 'St Andrews Links',
+    dateTime: '2024-03-22T09:15:00Z',
+    spotsAvailable: 1,
+    holes: 9,
+    priceAmount: 175,
+    currency: 'GBP',
+    bookingUrl: 'https://example.com/book3',
+    createdAt: '2024-03-19T00:00:00Z',
+    updatedAt: '2024-03-19T00:00:00Z'
+  }
+];
+
 describe('TeeTimesList', () => {
   it('renders correctly', () => {
     const { toJSON } = render(
       <PaperProvider>
-        <TeeTimesList />
+        <TeeTimesList teeTimes={mockTeeTimes} onRefresh={() => {}} />
       </PaperProvider>
     );
     expect(toJSON()).toMatchSnapshot();
@@ -29,7 +68,7 @@ describe('TeeTimesList', () => {
   it('renders all mock tee times', () => {
     const { getByText } = render(
       <PaperProvider>
-        <TeeTimesList />
+        <TeeTimesList teeTimes={mockTeeTimes} onRefresh={() => {}} />
       </PaperProvider>
     );
 
@@ -39,9 +78,9 @@ describe('TeeTimesList', () => {
     expect(getByText('St Andrews Links')).toBeTruthy();
 
     // Check if spots and holes are rendered
-    expect(getByText('4 spots • 18 holes')).toBeTruthy();
-    expect(getByText('2 spots • 18 holes')).toBeTruthy();
-    expect(getByText('1 spots • 9 holes')).toBeTruthy();
+    expect(getByText(/4 spots • 18 holes/)).toBeTruthy();
+    expect(getByText(/2 spots • 18 holes/)).toBeTruthy();
+    expect(getByText(/1 spots • 9 holes/)).toBeTruthy();
 
     // Check if prices are rendered
     expect(getByText('$150.00')).toBeTruthy();

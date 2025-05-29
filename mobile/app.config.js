@@ -23,7 +23,7 @@ export default {
     favicon: './assets/favicon.png'
   },
   extra: {
-    API_BASE_URL: process.env.API_BASE_URL,
-    BOOTSTRAP_PATH: process.env.BOOTSTRAP_PATH,
+    API_BASE_URL: 'http://192.168.1.254:3000',
+    BOOTSTRAP_PATH: '/v1/public/api-key',
   }
 }; 

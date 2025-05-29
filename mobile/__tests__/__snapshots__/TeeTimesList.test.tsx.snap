@@ -33,32 +33,38 @@ exports[`TeeTimesList renders correctly 1`] = `
           {
             "bookingUrl": "https://example.com/book1",
             "courseName": "Pine Valley Golf Club",
+            "createdAt": "2024-03-19T00:00:00Z",
             "currency": "USD",
             "dateTime": "2024-03-20T10:00:00Z",
             "holes": 18,
             "id": "1",
             "priceAmount": 150,
             "spotsAvailable": 4,
+            "updatedAt": "2024-03-19T00:00:00Z",
           },
           {
             "bookingUrl": "https://example.com/book2",
             "courseName": "Augusta National",
+            "createdAt": "2024-03-19T00:00:00Z",
             "currency": "USD",
             "dateTime": "2024-03-21T14:30:00Z",
             "holes": 18,
             "id": "2",
             "priceAmount": 200,
             "spotsAvailable": 2,
+            "updatedAt": "2024-03-19T00:00:00Z",
           },
           {
             "bookingUrl": "https://example.com/book3",
             "courseName": "St Andrews Links",
+            "createdAt": "2024-03-19T00:00:00Z",
             "currency": "GBP",
             "dateTime": "2024-03-22T09:15:00Z",
             "holes": 9,
             "id": "3",
             "priceAmount": 175,
             "spotsAvailable": 1,
+            "updatedAt": "2024-03-19T00:00:00Z",
           },
         ]
       }
@@ -69,15 +75,25 @@ exports[`TeeTimesList renders correctly 1`] = `
       onLayout={[Function]}
       onMomentumScrollBegin={[Function]}
       onMomentumScrollEnd={[Function]}
+      onRefresh={[Function]}
       onScroll={[Function]}
       onScrollBeginDrag={[Function]}
       onScrollEndDrag={[Function]}
+      refreshControl={
+        <RefreshControlMock
+          onRefresh={[Function]}
+          refreshing={false}
+        />
+      }
+      refreshing={false}
       removeClippedSubviews={false}
       renderItem={[Function]}
-      scrollEventThrottle={50}
+      scrollEventThrottle={0.0001}
       stickyHeaderIndices={[]}
+      testID="tee-times-list"
       viewabilityConfigCallbackPairs={[]}
     >
+      <RCTRefreshControl />
       <View>
         <View
           onFocusCapture={[Function]}
@@ -274,7 +290,7 @@ exports[`TeeTimesList renders correctly 1`] = `
                     ]
                   }
                 >
-                  4 spots • 18 holes
+                  Wed, Mar 20 • 4:00 AM • 4 spots • 18 holes
                 </Text>
               </View>
               <Text
@@ -505,7 +521,7 @@ exports[`TeeTimesList renders correctly 1`] = `
                     ]
                   }
                 >
-                  2 spots • 18 holes
+                  Thu, Mar 21 • 8:30 AM • 2 spots • 18 holes
                 </Text>
               </View>
               <Text
@@ -736,7 +752,7 @@ exports[`TeeTimesList renders correctly 1`] = `
                     ]
                   }
                 >
-                  1 spots • 9 holes
+                  Fri, Mar 22 • 3:15 AM • 1 spots • 9 holes
                 </Text>
               </View>
               <Text

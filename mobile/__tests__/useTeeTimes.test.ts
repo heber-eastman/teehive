@@ -13,11 +13,14 @@ describe('useTeeTimes', () => {
     {
       id: '1',
       courseName: 'Test Course',
-      date: '2024-03-20',
-      time: '14:30',
-      price: 50,
-      availableSpots: 4,
+      dateTime: '2024-03-20T14:30:00Z',
+      priceAmount: 50,
+      currency: 'USD',
+      spotsAvailable: 4,
       holes: 18,
+      bookingUrl: 'https://example.com/book1',
+      createdAt: '2024-03-19T00:00:00Z',
+      updatedAt: '2024-03-19T00:00:00Z'
     },
   ];
 
@@ -32,6 +35,8 @@ describe('useTeeTimes', () => {
   it('should fetch tee times when API key is available', async () => {
     (global.fetch as jest.Mock).mockResolvedValueOnce({
       ok: true,
+      status: 200,
+      headers: new Headers(),
       json: () => Promise.resolve(mockTeeTimes),
     });
 
@@ -74,13 +79,15 @@ describe('useTeeTimes', () => {
 
     expect(result.current.isLoading).toBe(false);
     expect(result.current.teeTimes).toEqual([]);
-    expect(result.current.error).toBe(error);
+    expect(result.current.error?.message).toBe('Failed to fetch tee times');
   });
 
   it('should handle non-OK responses', async () => {
     (global.fetch as jest.Mock).mockResolvedValueOnce({
       ok: false,
+      status: 404,
       statusText: 'Not Found',
+      headers: new Headers(),
     });
 
     const { result } = renderHook(() => useTeeTimes());

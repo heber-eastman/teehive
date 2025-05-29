@@ -7,11 +7,14 @@ const API_BASE_URL = Constants.expoConfig?.extra?.API_BASE_URL || '';
 export interface TeeTime {
   id: string;
   courseName: string;
-  date: string;
-  time: string;
-  price: number;
-  availableSpots: number;
+  dateTime: string;
+  spotsAvailable: number;
+  priceAmount: number;
+  currency: string;
   holes: number;
+  bookingUrl: string;
+  createdAt: string;
+  updatedAt: string;
 }
 
 interface UseTeeTimesResult {
@@ -28,9 +31,17 @@ export function useTeeTimes(): UseTeeTimesResult {
   const { apiKey, loading: isApiKeyLoading } = useApiKey();
 
   const fetchTeeTimes = async () => {
-    if (!apiKey) return;
+    if (!apiKey) {
+      console.log('No API key available');
+      return;
+    }
 
     try {
+      console.log('=== Tee Times Fetch Debug ===');
+      console.log('API URL:', `${API_BASE_URL}/v1/tee-times`);
+      console.log('API Key:', apiKey);
+      console.log('API Base URL from config:', API_BASE_URL);
+      
       setIsLoading(true);
       setError(null);
       
@@ -41,20 +52,33 @@ export function useTeeTimes(): UseTeeTimesResult {
         },
       });
 
+      console.log('Response status:', response.status);
+      console.log('Response headers:', JSON.stringify(Object.fromEntries(response.headers.entries())));
+      
       if (!response.ok) {
-        throw new Error(`Failed to fetch tee times: ${response.statusText}`);
+        const errorText = await response.text();
+        console.error('Error response:', errorText);
+        throw new Error('Failed to fetch tee times');
       }
 
       const data = await response.json();
+      console.log('Received tee times:', JSON.stringify(data, null, 2));
       setTeeTimes(data);
     } catch (err) {
-      setError(err instanceof Error ? err : new Error('Failed to fetch tee times'));
+      console.error('Error in fetchTeeTimes:', err);
+      setError(new Error('Failed to fetch tee times'));
     } finally {
       setIsLoading(false);
     }
   };
 
   useEffect(() => {
+    console.log('=== Tee Times Hook Debug ===');
+    console.log('useEffect triggered');
+    console.log('isApiKeyLoading:', isApiKeyLoading);
+    console.log('apiKey available:', !!apiKey);
+    console.log('Current tee times:', teeTimes);
+    
     if (!isApiKeyLoading && apiKey) {
       fetchTeeTimes();
     }
