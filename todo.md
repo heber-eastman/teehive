@@ -84,6 +84,7 @@ A comprehensive checklist for implementing Teehive v1, organized by phase, chunk
 - [x]  In `src/index.ts`, mount session and auth routes.
 - [x]  Write E2E test `backend/tests/auth.test.ts` mocking OAuth callback.
 - [x]  Commit OAuth integration code.
+- [x]  **Fix and improve backend test setup and mocks for authentication and Prisma; all backend tests passing (May 2024).**
 
 ### Chunk 3.2: Environment Variables & Configuration
 
