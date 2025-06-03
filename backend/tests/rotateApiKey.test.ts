@@ -1,11 +1,10 @@
-import { PrismaClient } from '@prisma/client';
 import crypto from 'crypto';
-
-const prisma = new PrismaClient();
+import { prisma, testData } from './setup';
 
 describe('API Key Rotation', () => {
   beforeEach(async () => {
     // Clean up the ApiKey table before each test
+    testData.apiKey = null;
     await prisma.apiKey.deleteMany();
   });
 
@@ -31,6 +30,9 @@ describe('API Key Rotation', () => {
       },
     });
 
+    // Set testData.apiKey for middleware
+    testData.apiKey = apiKey;
+
     // Verify the key was created
     expect(apiKey).toBeDefined();
     expect(apiKey.key).toBe(testKey);
@@ -53,6 +55,7 @@ describe('API Key Rotation', () => {
         key: initialKey,
       },
     });
+    testData.apiKey = { id: 'default-api-key', key: initialKey };
 
     // Generate new key
     const newKey = crypto.randomBytes(32).toString('hex');
@@ -70,6 +73,7 @@ describe('API Key Rotation', () => {
         key: newKey,
       },
     });
+    testData.apiKey = updatedKey;
 
     // Verify the key was updated
     expect(updatedKey.key).toBe(newKey);

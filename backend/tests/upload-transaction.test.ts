@@ -1,8 +1,6 @@
-import { PrismaClient } from '@prisma/client';
+import { prisma, testData } from './setup';
 import { processUpload } from '../src/services/uploadService';
 import { parseCSV } from '../src/utils/csvParser';
-
-const prisma = new PrismaClient();
 
 interface TeeTimeRow {
   course_name: string;
@@ -17,6 +15,8 @@ interface TeeTimeRow {
 describe('Upload Service Integration Tests', () => {
   beforeEach(async () => {
     // Clean up the database before each test
+    testData.teeTimes = [];
+    testData.uploadLogs = [];
     await prisma.uploadLog.deleteMany();
     await prisma.teeTime.deleteMany();
   });

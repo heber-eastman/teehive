@@ -2,25 +2,36 @@
 import { config } from 'dotenv';
 import path from 'path';
 import fs from 'fs';
+import cors from 'cors';
+import { Request, Response, NextFunction } from 'express';
+import { prisma } from './lib/prisma';
 
 const envPath = path.resolve(__dirname, '..', '.env');
 console.log('Loading .env from:', envPath);
 console.log('File exists:', fs.existsSync(envPath));
 
-if (fs.existsSync(envPath)) {
-  const result = config({ path: envPath });
-  console.log('Dotenv config result:', result);
+const result = config({ path: envPath });
+if (result.error) {
+  console.error('Error loading .env file:', result.error);
+  process.exit(1);
 }
 
-// Force reload environment variables
-process.env.GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
-process.env.GOOGLE_CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET;
-process.env.SESSION_SECRET = process.env.SESSION_SECRET;
-process.env.DATABASE_URL = process.env.DATABASE_URL;
-process.env.PORT = process.env.PORT;
+// Verify required environment variables
+const requiredEnvVars = [
+  'DATABASE_URL',
+  'SESSION_SECRET',
+  'GOOGLE_CLIENT_ID',
+  'GOOGLE_CLIENT_SECRET',
+  'PORT'
+];
+
+const missingEnvVars = requiredEnvVars.filter(varName => !process.env[varName]);
+if (process.env.NODE_ENV !== 'test' && missingEnvVars.length > 0) {
+  console.error('Missing required environment variables:', missingEnvVars);
+  process.exit(1);
+}
 
 import express from 'express';
-import { PrismaClient } from '@prisma/client';
 import passport from 'passport';
 import session from 'express-session';
 import { sessionConfig, configurePassport, isAuthenticated } from './auth';
@@ -32,13 +43,16 @@ import multer from 'multer';
 import { parseCSV, ColumnDefinition } from './utils/csvParser';
 
 const app = express();
-const prisma = new PrismaClient();
 const port = process.env.PORT || 3000;
 
+// Export app for testing
+export { app };
+
 // Middleware
+app.use(cors());
 app.use(express.json());
-app.use(session(sessionConfig));
-app.use(passport.initialize());
+app.use(session(sessionConfig) as any);
+app.use(passport.initialize() as any);
 app.use(passport.session());
 
 // Serve static files from public directory
@@ -110,7 +124,7 @@ app.get('/api/me', isAuthenticated, (req, res) => {
 });
 
 // Mount admin routes
-app.use('/', adminRouter);
+app.use('/v1/admin', adminRouter);
 
 // Mount public routes
 app.use('/v1/public', publicRouter);
@@ -119,7 +133,7 @@ app.use('/v1/public', publicRouter);
 app.use('/v1/tee-times', teeTimesRouter);
 
 // Add test endpoint for CSV upload
-app.post('/api/test/csv-upload', upload.single('file'), async (req, res) => {
+app.post('/api/test/csv-upload', (upload.single('file') as any), async (req, res) => {
   try {
     if (!req.file) {
       return res.status(400).json({ error: 'No file uploaded' });
@@ -131,6 +145,17 @@ app.post('/api/test/csv-upload', upload.single('file'), async (req, res) => {
     console.error('CSV parsing error:', error);
     res.status(500).json({ error: 'Failed to parse CSV file' });
   }
+});
+
+// Error handling middleware
+app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
+  console.error('Error:', err);
+  res.status(500).json({ error: err.message || 'Internal server error' });
+});
+
+// 404 handler
+app.use((req: Request, res: Response) => {
+  res.status(404).json({ error: 'Not found' });
 });
 
 // Connect to database and start server
@@ -155,4 +180,7 @@ async function startServer() {
   }
 }
 
-startServer(); 
+// Start the server
+if (process.env.NODE_ENV !== 'test') {
+  startServer();
+} 

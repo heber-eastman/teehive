@@ -2,6 +2,8 @@ import passport from 'passport';
 import { Strategy as GoogleStrategy } from 'passport-google-oauth20';
 import session from 'express-session';
 import { User } from './types';
+import { Request, Response, NextFunction } from 'express';
+import { prisma } from '../lib/prisma';
 
 // Debug environment variables
 console.log('Environment variables in auth.ts:', {
@@ -58,9 +60,29 @@ export function configurePassport() {
 }
 
 // Auth middleware to check if user is authenticated
-export const isAuthenticated = (req: any, res: any, next: any) => {
-  if (req.isAuthenticated()) {
-    return next();
+export const isAuthenticated = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const authHeader = req.headers.authorization;
+    if (!authHeader) {
+      return res.status(401).json({ error: 'No authorization header' });
+    }
+
+    const [bearer, token] = authHeader.split(' ');
+    if (bearer !== 'Bearer' || !token) {
+      return res.status(401).json({ error: 'Invalid authorization format' });
+    }
+
+    const apiKey = await prisma.apiKey.findFirst({
+      where: { key: token }
+    });
+
+    if (!apiKey) {
+      return res.status(401).json({ error: 'Invalid API key' });
+    }
+
+    next();
+  } catch (err) {
+    console.error('Authentication error:', err);
+    res.status(500).json({ error: 'Internal server error during authentication' });
   }
-  res.status(401).json({ error: 'Unauthorized' });
 }; 

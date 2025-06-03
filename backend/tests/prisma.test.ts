@@ -1,10 +1,11 @@
 import { PrismaClient } from '@prisma/client';
 
 describe('Prisma Client', () => {
-  let prisma: PrismaClient;
+  const prisma = new PrismaClient();
 
-  beforeAll(() => {
-    prisma = new PrismaClient();
+  beforeAll(async () => {
+    // Clean up any existing data
+    await prisma.teeTime.deleteMany();
   });
 
   afterAll(async () => {

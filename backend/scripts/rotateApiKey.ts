@@ -1,7 +1,5 @@
-import { PrismaClient } from '@prisma/client';
+import { prisma } from '../src/lib/prisma';
 import crypto from 'crypto';
-
-const prisma = new PrismaClient();
 
 async function rotateApiKey() {
   try {

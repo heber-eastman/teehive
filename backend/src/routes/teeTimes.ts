@@ -1,9 +1,8 @@
 import { Router } from 'express';
-import { PrismaClient } from '@prisma/client';
+import { prisma } from '../lib/prisma';
 import { apiKeyAuth } from '../middleware/apiKeyAuth';
 
 const router = Router();
-const prisma = new PrismaClient();
 
 /**
  * @route GET /v1/tee-times

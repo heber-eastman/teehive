@@ -1,18 +1,22 @@
 import request from 'supertest';
-import express from 'express';
-import { PrismaClient } from '@prisma/client';
-
-// Create a test app instance
-const app = express();
-const prisma = new PrismaClient();
-
-// Health check endpoint
-app.get('/health', (req, res) => {
-  res.status(200).json({ status: 'ok' });
-});
+import { app } from '../src/index';
 
 describe('Health Endpoint', () => {
-  it('should return 200 and status ok', async () => {
+  const originalEnv = process.env;
+
+  beforeEach(() => {
+    jest.resetModules();
+    process.env = {
+      ...originalEnv,
+      PORT: '3001', // Use a different port for tests
+    };
+  });
+
+  afterEach(() => {
+    process.env = originalEnv;
+  });
+
+  it('should return 200 OK with status message', async () => {
     const response = await request(app)
       .get('/health')
       .expect('Content-Type', /json/)

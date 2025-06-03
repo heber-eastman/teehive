@@ -1,7 +1,6 @@
-import { PrismaClient, Prisma } from '@prisma/client';
+import { Prisma } from '@prisma/client';
+import { prisma } from '../lib/prisma';
 import { ParseResult } from '../utils/csvParser';
-
-const prisma = new PrismaClient();
 
 interface TeeTimeRow {
   course_name: string;
