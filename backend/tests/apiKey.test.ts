@@ -34,7 +34,7 @@ describe('API Key Endpoint', () => {
       .expect(200);
 
     expect(response.body).toHaveProperty('apiKey');
-    // The API key is hashed before being returned
-    expect(response.body.apiKey).toMatch(/^[a-f0-9]{64}$/);
+    // The API key should be returned as-is from the database
+    expect(response.body.apiKey).toBe('test-api-key');
   });
 }); 

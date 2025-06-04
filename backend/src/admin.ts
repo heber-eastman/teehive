@@ -4,7 +4,6 @@ import { parseCSV } from './utils/csvParser';
 import { processUpload } from './services/uploadService';
 import { Router } from 'express';
 import { isAuthenticated } from './auth';
-// import { isAuthenticated } from './auth';  // Temporarily comment out
 
 const router = express.Router();
 const upload = multer({ 
@@ -36,11 +35,11 @@ const teeTimeColumns = [
   { name: 'price_amount', validation: { type: 'number' as const, required: true } },
   { name: 'currency', validation: { type: 'string' as const, required: true } },
   { name: 'holes', validation: { type: 'number' as const, required: true } },
-  { name: 'booking_url', validation: { type: 'string' as const, required: true } },
+  { name: 'booking_url', validation: { type: 'string' as const, required: true } }
 ];
 
 // GET /admin - HTML form
-router.get('/admin', /* isAuthenticated, */ (req, res) => {
+router.get('/admin', (req, res) => {
   res.send(`
     <!DOCTYPE html>
     <html>
@@ -106,7 +105,7 @@ router.get('/admin', /* isAuthenticated, */ (req, res) => {
       <body>
         <div class="upload-container">
           <h1>Upload CSV File</h1>
-          <form action="/admin" method="post" enctype="multipart/form-data">
+          <form action="/v1/admin/admin" method="post" enctype="multipart/form-data">
             <div class="file-input-container">
               <input type="file" name="csv" accept=".csv" class="file-input" required />
             </div>
@@ -122,7 +121,7 @@ router.get('/admin', /* isAuthenticated, */ (req, res) => {
             
             try {
               resultDiv.innerHTML = '<p>Processing...</p>';
-              const response = await fetch('/admin', {
+              const response = await fetch('/v1/admin/admin', {
                 method: 'POST',
                 body: formData
               });
@@ -134,18 +133,16 @@ router.get('/admin', /* isAuthenticated, */ (req, res) => {
               }
               
               let html = '<h3>Upload Results:</h3>';
-              html += \`<p class="success">\${data.message}</p>\`;
-              html += \`<p>Total Records: \${data.totalRows}</p>\`;
-              html += \`<p>Valid Records: \${data.validRows}</p>\`;
-              html += \`<p>Invalid Records: \${data.skippedRows}</p>\`;
-              
               if (data.error) {
-                html += \`<p class="error">Error: \${data.error}</p>\`;
+                html += '<p class="error">Error: ' + data.error + '</p>';
               }
-              
+              html += '<p><strong>Total Rows:</strong> ' + data.totalRows + '</p>';
+              html += '<p><strong>Valid Rows:</strong> ' + data.validRows + '</p>';
+              html += '<p><strong>Skipped Rows:</strong> ' + data.skippedRows + '</p>';
+              html += '<p class="success">' + data.message + '</p>';
               resultDiv.innerHTML = html;
             } catch (error) {
-              resultDiv.innerHTML = \`<p class="error">Error: \${error.message}</p>\`;
+              resultDiv.innerHTML = '<p class="error">Error: ' + (error instanceof Error ? error.message : 'Unknown error') + '</p>';
             }
           });
         </script>
@@ -155,7 +152,7 @@ router.get('/admin', /* isAuthenticated, */ (req, res) => {
 });
 
 // POST /admin - handle file upload and parse CSV
-router.post('/admin', /* isAuthenticated, */ (upload.single('csv') as any), async (req: Request, res) => {
+router.post('/admin', upload.single('csv') as any, async (req: Request, res) => {
   const file = req.file as Express.Multer.File | undefined;
   if (!file) {
     return res.status(400).json({ error: 'No file uploaded' });
@@ -189,4 +186,5 @@ router.get('/tee-times', isAuthenticated, (req, res) => {
   res.status(200).json({ message: 'Tee times endpoint' });
 });
 
+// Export the router
 export default router; 

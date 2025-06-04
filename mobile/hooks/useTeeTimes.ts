@@ -28,7 +28,7 @@ export function useTeeTimes(): UseTeeTimesResult {
   const [teeTimes, setTeeTimes] = useState<TeeTime[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);
-  const { apiKey, loading: isApiKeyLoading } = useApiKey();
+  const { apiKey, loading: isApiKeyLoading, handle401 } = useApiKey();
 
   const fetchTeeTimes = async () => {
     if (!apiKey) {
@@ -54,6 +54,12 @@ export function useTeeTimes(): UseTeeTimesResult {
 
       console.log('Response status:', response.status);
       console.log('Response headers:', JSON.stringify(Object.fromEntries(response.headers.entries())));
+      
+      if (response.status === 401) {
+        console.log('Received 401 error, clearing API key cache and fetching new key...');
+        await handle401();
+        return; // handle401 will trigger a re-fetch with the new key
+      }
       
       if (!response.ok) {
         const errorText = await response.text();
