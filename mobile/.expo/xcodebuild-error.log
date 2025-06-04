@@ -1,0 +1,10 @@
+--- xcodebuild: WARNING: Using the first of multiple matching destinations:
+{ platform:iOS Simulator, arch:arm64, id:E9F9EF21-1B60-494A-9414-11745CB1A914, OS:18.5, name:iPhone 16 Plus }
+{ platform:iOS Simulator, arch:x86_64, id:E9F9EF21-1B60-494A-9414-11745CB1A914, OS:18.5, name:iPhone 16 Plus }
+** BUILD FAILED **
+
+
+The following build commands failed:
+	PhaseScriptExecution [CP-User]\ Generate\ Specs /Users/heber/Library/Developer/Xcode/DerivedData/Teehive-bjutdyivwjlqjkanpqbelbiimdcp/Build/Intermediates.noindex/Pods.build/Debug-iphonesimulator/React-rncore.build/Script-46EB2E00019C00.sh (in target 'React-rncore' from project 'Pods')
+	Building workspace Teehive with scheme Teehive and configuration Debug
+(2 failures)

@@ -1,6 +1,15 @@
 import { Request, Response, NextFunction } from 'express';
 import { prisma } from '../lib/prisma';
 
+// Extend Express Request type to include apiKey
+declare global {
+  namespace Express {
+    interface Request {
+      apiKey?: string;
+    }
+  }
+}
+
 export const apiKeyAuth = async (req: Request, res: Response, next: NextFunction) => {
   try {
     // Get the API key from the Authorization header

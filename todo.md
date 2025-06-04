@@ -205,27 +205,60 @@ A comprehensive checklist for implementing Teehive v1, organized by phase, chunk
 
 ## Phase 7: Testing & Quality
 
-### Chunk 7.1: Backend Jest Tests
+### Chunk 7.1: Code Quality & Standards
 
-- [ ]  Add `backend/jest.config.js` for TypeScript.
-- [ ]  Add tests for CSV parser, auth middleware, health endpoint.
-- [ ]  Set coverage threshold to 80%.
-- [ ]  Commit Jest config and tests.
+- [x] Install ESLint and Prettier in the monorepo
+- [x] Configure ESLint for TypeScript and React Native
+- [x] Set up Prettier for consistent code formatting
+- [x] Add lint and format scripts to package.json
+- [ ] Add pre-commit hooks for linting and formatting
+- [ ] Configure VS Code settings for consistent development experience
 
 ### Chunk 7.2: Mobile Jest Tests
 
-- [ ]  Add `mobile/jest.config.js` with React Native preset.
-- [ ]  Write tests: App smoke, TeeTimesList, config hook.
-- [ ]  Ensure mobile tests run on CI.
-- [ ]  Commit Jest config and tests.
+- [x] Configure Jest for React Native using jest-expo
+- [x] Write smoke test for App component
+- [x] Create snapshot test for TeeTimesList component
+- [x] Test configuration hook with proper mocks
+- [x] Update CI workflow to run mobile tests
+- [ ] Add more component tests for error states
+- [ ] Add integration tests for API interactions
 
-### Chunk 7.3: ESLint & Prettier + Pre-commit Hooks
+### Chunk 7.3: Backend Test Improvements
 
-- [ ]  Install `eslint`, `prettier`, `eslint-config-prettier`, `eslint-config-recommended`.
-- [ ]  Create `.eslintrc.js` and `.prettierrc`.
-- [ ]  Install `husky` and `lint-staged`.
-- [ ]  Configure `.husky/pre-commit` for lint-staged running `eslint --fix` and `prettier --write`.
-- [ ]  Commit linting/formatting setup.
+- [x] Fix Prisma client mocking in tests
+- [x] Improve authentication middleware tests
+- [x] Update test setup for better isolation
+- [ ] Add more integration tests for API endpoints
+- [ ] Add performance tests for CSV upload
+- [ ] Improve test coverage reporting
+
+### Chunk 7.4: Documentation
+
+- [ ] Create API documentation using OpenAPI/Swagger
+- [ ] Add setup instructions in README.md
+- [ ] Document environment variables
+- [ ] Add contribution guidelines
+- [ ] Create architecture diagrams
+- [ ] Document testing strategy
+
+### Chunk 7.5: Security & Performance
+
+- [ ] Implement rate limiting for API endpoints
+- [ ] Add request validation middleware
+- [ ] Set up security headers
+- [ ] Implement caching strategy
+- [ ] Add performance monitoring
+- [ ] Set up error tracking
+
+### Chunk 7.6: Deployment & DevOps
+
+- [ ] Set up production environment
+- [ ] Configure database backups
+- [ ] Set up monitoring and alerting
+- [ ] Create deployment documentation
+- [ ] Configure staging environment
+- [ ] Set up automated database migrations
 
 ---
 

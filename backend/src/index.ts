@@ -49,8 +49,17 @@ const port = process.env.PORT || 3000;
 export { app };
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: [
+    'http://192.168.1.97:3000',
+    'http://192.168.1.97:8081',
+    'http://localhost:3000',
+    'http://localhost:8081'
+  ],
+  credentials: true
+}));
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(session(sessionConfig) as any);
 app.use(passport.initialize() as any);
 app.use(passport.session());
@@ -171,9 +180,11 @@ async function startServer() {
     await prisma.$connect();
     console.log('✅ Successfully connected to database');
 
-    app.listen(port, () => {
-      console.log(`🚀 Server running at http://localhost:${port}`);
+    console.log('About to call app.listen...');
+    app.listen(Number(port), '0.0.0.0', () => {
+      console.log(`🚀 Server running at http://0.0.0.0:${port}`);
     });
+    console.log('app.listen call finished (this should print immediately after listen is called)');
   } catch (error) {
     console.error('❌ Failed to connect to database:', error);
     process.exit(1);

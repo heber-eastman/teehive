@@ -21,5 +21,14 @@ jobs:
     - name: Install dependencies
       run: npm install
       
-    - name: Verify mobile setup
-      run: echo "Mobile CI setup complete" 
+    - name: Run mobile tests
+      run: |
+        cd mobile
+        npm test
+      
+    - name: Upload test results
+      if: always()
+      uses: actions/upload-artifact@v3
+      with:
+        name: mobile-test-results
+        path: mobile/coverage 

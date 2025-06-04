@@ -1,22 +1,20 @@
-import { prisma } from '../src/lib/prisma';
-import crypto from 'crypto';
+import { PrismaClient } from '@prisma/client';
+
+const prisma = new PrismaClient();
 
 async function generateApiKey() {
   try {
-    // Generate a random API key
-    const apiKey = crypto.randomBytes(32).toString('hex');
-
-    // Store the API key in the database
-    await prisma.apiKey.create({
+    const apiKey = `tk_${Math.random().toString(36).substring(2)}${Date.now().toString(36)}`;
+    
+    const createdKey = await prisma.apiKey.create({
       data: {
-        key: apiKey
-      }
+        key: apiKey,
+      },
     });
 
-    console.log('✅ API key generated successfully:');
-    console.log(apiKey);
+    console.log('API Key created successfully:', createdKey);
   } catch (error) {
-    console.error('Error generating API key:', error);
+    console.error('Error creating API key:', error);
   } finally {
     await prisma.$disconnect();
   }
