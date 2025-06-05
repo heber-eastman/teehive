@@ -1,82 +1,94 @@
 import React from 'react';
-import { FlatList, StyleSheet } from 'react-native';
-import { List, Text, useTheme } from 'react-native-paper';
-import { TeeTime } from '../hooks/useTeeTimes';
+import { View, Text, FlatList, StyleSheet, TouchableOpacity, Linking } from 'react-native';
+import { useTeeTimes, TeeTime } from '../hooks/useTeeTimes';
+import TeeTimeCard from '../components/TeeTimeCard';
 
-interface TeeTimesListProps {
-  teeTimes: TeeTime[];
-  onRefresh: () => void;
-}
+export default function TeeTimesList() {
+  const { teeTimes, isLoading, error, refetch } = useTeeTimes();
 
-// Format date to "Mon, Jun 1 • 2:30 PM"
-const formatDateTime = (dateString: string): string => {
-  const date = new Date(dateString);
-  return date.toLocaleDateString('en-US', {
-    weekday: 'short',
-    month: 'short',
-    day: 'numeric'
-  }) + ' • ' + date.toLocaleTimeString('en-US', {
-    hour: 'numeric',
-    minute: '2-digit',
-    hour12: true
-  });
-};
 
-// Format price with currency
-const formatPrice = (amount: number, currency: string): string => {
-  const validCurrency = currency && currency.length === 3 ? currency : 'USD';
-  return new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: validCurrency
-  }).format(amount);
-};
 
-export const TeeTimesList: React.FC<TeeTimesListProps> = ({ teeTimes, onRefresh }) => {
-  const theme = useTheme();
+  const handleBooking = (url: string) => {
+    Linking.openURL(url);
+  };
 
-  const renderItem = ({ item }: { item: TeeTime }) => (
-    <List.Item
-      title={item.courseName}
-      description={`${formatDateTime(item.dateTime)} • ${item.spotsAvailable} spots • ${item.holes} holes`}
-      right={() => (
-        <Text style={[styles.price, { color: theme.colors.primary }]}>
-          {formatPrice(item.priceAmount, item.currency)}
-        </Text>
-      )}
-      left={props => <List.Icon {...props} icon="golf" />}
-      style={styles.listItem}
-    />
-  );
+  const renderTeeTime = ({ item }: { item: TeeTime }) => {
+    return (
+      <TeeTimeCard 
+        teeTime={item}
+        onPress={() => handleBooking(item.bookingUrl)}
+      />
+    );
+  };
+
+  if (isLoading) {
+    return (
+      <View style={styles.centerContainer}>
+        <Text style={styles.loadingText}>Loading tee times...</Text>
+      </View>
+    );
+  }
+
+  if (error) {
+    return (
+      <View style={styles.centerContainer}>
+        <Text style={styles.errorText}>Error: {error.message}</Text>
+        <TouchableOpacity style={styles.retryButton} onPress={refetch}>
+          <Text style={styles.retryText}>Retry</Text>
+        </TouchableOpacity>
+      </View>
+    );
+  }
 
   return (
-    <FlatList
-      testID="tee-times-list"
-      data={teeTimes}
-      renderItem={renderItem}
-      keyExtractor={item => item.id}
-      contentContainerStyle={styles.container}
-      onRefresh={onRefresh}
-      refreshing={false}
-    />
+    <View style={styles.container}>
+      <FlatList
+        data={teeTimes}
+        renderItem={renderTeeTime}
+        keyExtractor={(item) => item.id}
+        contentContainerStyle={styles.listContainer}
+        showsVerticalScrollIndicator={false}
+      />
+    </View>
   );
-};
+}
 
 const styles = StyleSheet.create({
   container: {
-    flexGrow: 1,
+    flex: 1,
+    backgroundColor: '#f5f5f5',
+  },
+  listContainer: {
     padding: 16,
   },
-  listItem: {
-    marginBottom: 8,
-    backgroundColor: 'white',
-    borderRadius: 8,
-    elevation: 2,
+  centerContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 20,
   },
-  price: {
+  loadingText: {
+    fontFamily: 'System',
     fontSize: 16,
-    fontWeight: 'bold',
-    alignSelf: 'center',
+    color: '#666',
   },
-});
-
-export default TeeTimesList; 
+  errorText: {
+    fontFamily: 'System',
+    fontSize: 16,
+    color: '#d32f2f',
+    textAlign: 'center',
+    marginBottom: 16,
+  },
+  retryButton: {
+    backgroundColor: '#1976d2',
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    borderRadius: 6,
+  },
+  retryText: {
+    fontFamily: 'System',
+    fontSize: 14,
+    color: '#ffffff',
+    fontWeight: '500',
+  },
+}); 

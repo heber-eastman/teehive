@@ -3,14 +3,15 @@ import { Provider as PaperProvider } from 'react-native-paper';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import TeeTimesList from './screens/TeeTimesList';
 import { useTeeTimes } from './hooks/useTeeTimes';
+import FontLoader from './components/FontLoader';
 
 const App = () => {
-  const { teeTimes, isLoading, error, refetch } = useTeeTimes();
-
   return (
     <SafeAreaProvider>
       <PaperProvider>
-        <TeeTimesList teeTimes={teeTimes} onRefresh={refetch} />
+        <FontLoader>
+          <TeeTimesList />
+        </FontLoader>
       </PaperProvider>
     </SafeAreaProvider>
   );

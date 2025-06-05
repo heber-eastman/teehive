@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`TeeTimesList renders correctly 1`] = `
+exports[`TeeTimesList renders correctly with tee times 1`] = `
 <RNCSafeAreaProvider
   onInsetsChange={[Function]}
   style={
@@ -21,775 +21,1143 @@ exports[`TeeTimesList renders correctly 1`] = `
       }
     }
   >
-    <RCTScrollView
-      contentContainerStyle={
+    <View
+      style={
         {
-          "flexGrow": 1,
-          "padding": 16,
+          "backgroundColor": "#f5f5f5",
+          "flex": 1,
         }
       }
-      data={
-        [
-          {
-            "bookingUrl": "https://example.com/book1",
-            "courseName": "Pine Valley Golf Club",
-            "createdAt": "2024-03-19T00:00:00Z",
-            "currency": "USD",
-            "dateTime": "2024-03-20T10:00:00Z",
-            "holes": 18,
-            "id": "1",
-            "priceAmount": 150,
-            "spotsAvailable": 4,
-            "updatedAt": "2024-03-19T00:00:00Z",
-          },
-          {
-            "bookingUrl": "https://example.com/book2",
-            "courseName": "Augusta National",
-            "createdAt": "2024-03-19T00:00:00Z",
-            "currency": "USD",
-            "dateTime": "2024-03-21T14:30:00Z",
-            "holes": 18,
-            "id": "2",
-            "priceAmount": 200,
-            "spotsAvailable": 2,
-            "updatedAt": "2024-03-19T00:00:00Z",
-          },
-          {
-            "bookingUrl": "https://example.com/book3",
-            "courseName": "St Andrews Links",
-            "createdAt": "2024-03-19T00:00:00Z",
-            "currency": "GBP",
-            "dateTime": "2024-03-22T09:15:00Z",
-            "holes": 9,
-            "id": "3",
-            "priceAmount": 175,
-            "spotsAvailable": 1,
-            "updatedAt": "2024-03-19T00:00:00Z",
-          },
-        ]
-      }
-      getItem={[Function]}
-      getItemCount={[Function]}
-      keyExtractor={[Function]}
-      onContentSizeChange={[Function]}
-      onLayout={[Function]}
-      onMomentumScrollBegin={[Function]}
-      onMomentumScrollEnd={[Function]}
-      onRefresh={[Function]}
-      onScroll={[Function]}
-      onScrollBeginDrag={[Function]}
-      onScrollEndDrag={[Function]}
-      refreshControl={
-        <RefreshControlMock
-          onRefresh={[Function]}
-          refreshing={false}
-        />
-      }
-      refreshing={false}
-      removeClippedSubviews={false}
-      renderItem={[Function]}
-      scrollEventThrottle={0.0001}
-      stickyHeaderIndices={[]}
-      testID="tee-times-list"
-      viewabilityConfigCallbackPairs={[]}
     >
-      <RCTRefreshControl />
-      <View>
-        <View
-          onFocusCapture={[Function]}
-          onLayout={[Function]}
-          style={null}
-        >
+      <RCTScrollView
+        contentContainerStyle={
+          {
+            "padding": 16,
+          }
+        }
+        data={
+          [
+            {
+              "bookingUrl": "https://example.com/book1",
+              "courseName": "Pine Valley Golf Club",
+              "createdAt": "2024-03-19T00:00:00Z",
+              "currency": "USD",
+              "dateTime": "2024-03-20T10:00:00Z",
+              "holes": 18,
+              "id": "1",
+              "priceAmount": 150,
+              "spotsAvailable": 4,
+              "updatedAt": "2024-03-19T00:00:00Z",
+            },
+            {
+              "bookingUrl": "https://example.com/book2",
+              "courseName": "Augusta National",
+              "createdAt": "2024-03-19T00:00:00Z",
+              "currency": "USD",
+              "dateTime": "2024-03-21T14:30:00Z",
+              "holes": 18,
+              "id": "2",
+              "priceAmount": 200,
+              "spotsAvailable": 2,
+              "updatedAt": "2024-03-19T00:00:00Z",
+            },
+            {
+              "bookingUrl": "https://example.com/book3",
+              "courseName": "St Andrews Links",
+              "createdAt": "2024-03-19T00:00:00Z",
+              "currency": "GBP",
+              "dateTime": "2024-03-22T09:15:00Z",
+              "holes": 9,
+              "id": "3",
+              "priceAmount": 175,
+              "spotsAvailable": 1,
+              "updatedAt": "2024-03-19T00:00:00Z",
+            },
+          ]
+        }
+        getItem={[Function]}
+        getItemCount={[Function]}
+        keyExtractor={[Function]}
+        onContentSizeChange={[Function]}
+        onLayout={[Function]}
+        onMomentumScrollBegin={[Function]}
+        onMomentumScrollEnd={[Function]}
+        onScroll={[Function]}
+        onScrollBeginDrag={[Function]}
+        onScrollEndDrag={[Function]}
+        removeClippedSubviews={false}
+        renderItem={[Function]}
+        scrollEventThrottle={0.0001}
+        showsVerticalScrollIndicator={false}
+        stickyHeaderIndices={[]}
+        viewabilityConfigCallbackPairs={[]}
+      >
+        <View>
           <View
-            accessibilityState={
-              {
-                "busy": undefined,
-                "checked": undefined,
-                "disabled": true,
-                "expanded": undefined,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
-            collapsable={false}
-            focusable={true}
-            onBlur={[Function]}
-            onClick={[Function]}
-            onFocus={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              [
-                false,
-                [
-                  {
-                    "paddingRight": 24,
-                    "paddingVertical": 8,
-                  },
-                  {
-                    "backgroundColor": "white",
-                    "borderRadius": 8,
-                    "elevation": 2,
-                    "marginBottom": 8,
-                  },
-                ],
-              ]
-            }
+            onFocusCapture={[Function]}
+            onLayout={[Function]}
+            style={null}
           >
             <View
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
               style={
-                [
-                  {
-                    "flexDirection": "row",
-                    "marginVertical": 6,
-                    "width": "100%",
+                {
+                  "backgroundColor": "#ffffff",
+                  "borderRadius": 12,
+                  "elevation": 8,
+                  "flexDirection": "row",
+                  "height": 100,
+                  "marginBottom": 16,
+                  "opacity": 1,
+                  "overflow": "hidden",
+                  "position": "relative",
+                  "shadowColor": "#000",
+                  "shadowOffset": {
+                    "height": 4,
+                    "width": 0,
                   },
-                  undefined,
-                ]
+                  "shadowOpacity": 0.25,
+                  "shadowRadius": 6,
+                  "width": 718,
+                }
               }
             >
               <View
-                pointerEvents="box-none"
                 style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "justifyContent": "center",
-                    },
-                    {
-                      "alignSelf": "center",
-                      "marginLeft": 16,
-                      "marginRight": 0,
-                    },
-                  ]
+                  {
+                    "backgroundColor": "#92F882",
+                    "borderRadius": 3,
+                    "height": 6,
+                    "left": 8,
+                    "position": "absolute",
+                    "top": 8,
+                    "width": 6,
+                    "zIndex": 10,
+                  }
+                }
+              />
+              <View
+                style={
+                  {
+                    "height": 100,
+                    "overflow": "hidden",
+                    "position": "relative",
+                    "width": 96,
+                  }
                 }
               >
-                <Text
-                  accessibilityElementsHidden={true}
-                  allowFontScaling={false}
-                  importantForAccessibility="no-hide-descendants"
-                  pointerEvents="none"
-                  selectable={false}
+                <Image
+                  resizeMode="cover"
+                  source={
+                    {
+                      "uri": "https://images.unsplash.com/photo-1535131749006-b7f58c99034b?w=200&h=200&fit=crop",
+                    }
+                  }
                   style={
-                    [
-                      {
-                        "color": "rgba(73, 69, 79, 1)",
-                        "fontSize": 24,
-                      },
-                      [
-                        {
-                          "lineHeight": 24,
-                          "transform": [
-                            {
-                              "scaleX": 1,
-                            },
-                          ],
-                        },
-                        {
-                          "backgroundColor": "transparent",
-                        },
-                      ],
-                      {
-                        "fontFamily": "material-community",
-                        "fontStyle": "normal",
-                        "fontWeight": "normal",
-                      },
-                      {},
-                    ]
+                    {
+                      "height": 108,
+                      "left": -13,
+                      "position": "absolute",
+                      "top": -3,
+                      "width": 210,
+                    }
+                  }
+                />
+                <View
+                  style={
+                    {
+                      "backgroundColor": "rgba(173, 173, 173, 0.4)",
+                      "bottom": 0,
+                      "left": 0,
+                      "position": "absolute",
+                      "right": 0,
+                      "top": 0,
+                    }
+                  }
+                />
+                <Text
+                  style={
+                    {
+                      "bottom": 0,
+                      "color": "#ffffff",
+                      "fontFamily": "Rubik-Bold",
+                      "fontSize": 28,
+                      "left": 0,
+                      "lineHeight": 28,
+                      "paddingTop": 36,
+                      "position": "absolute",
+                      "right": 0,
+                      "textAlign": "center",
+                      "textAlignVertical": "center",
+                      "top": 0,
+                    }
                   }
                 >
-                  󰠣
+                  04:00
                 </Text>
               </View>
               <View
                 style={
-                  [
-                    {
-                      "paddingLeft": 16,
-                    },
-                    {
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "justifyContent": "center",
-                    },
-                    undefined,
-                  ]
+                  {
+                    "flex": 1,
+                    "paddingLeft": 22,
+                    "paddingRight": 16,
+                    "paddingTop": 16,
+                  }
                 }
-                testID="undefined-content"
               >
                 <Text
-                  numberOfLines={1}
-                  selectable={false}
                   style={
-                    [
-                      {
-                        "textAlign": "left",
-                      },
-                      {
-                        "color": "rgba(28, 27, 31, 1)",
-                        "fontFamily": "System",
-                        "fontWeight": "400",
-                        "letterSpacing": 0,
-                      },
-                      {
-                        "writingDirection": "ltr",
-                      },
-                      [
-                        {
-                          "fontSize": 16,
-                        },
-                        {
-                          "color": "rgba(28, 27, 31, 1)",
-                        },
-                        undefined,
-                      ],
-                    ]
+                    {
+                      "color": "#003a37",
+                      "fontFamily": "Rubik-Medium",
+                      "fontSize": 20,
+                      "marginBottom": 8,
+                    }
                   }
                 >
                   Pine Valley Golf Club
                 </Text>
-                <Text
-                  numberOfLines={2}
-                  onTextLayout={[Function]}
-                  selectable={false}
+                <View
                   style={
-                    [
-                      {
-                        "textAlign": "left",
-                      },
-                      {
-                        "color": "rgba(28, 27, 31, 1)",
-                        "fontFamily": "System",
-                        "fontWeight": "400",
-                        "letterSpacing": 0,
-                      },
-                      {
-                        "writingDirection": "ltr",
-                      },
-                      [
-                        {
-                          "fontSize": 14,
-                        },
-                        {
-                          "color": "rgba(73, 69, 79, 1)",
-                        },
-                        undefined,
-                      ],
-                    ]
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                      "gap": 12,
+                    }
                   }
                 >
-                  Wed, Mar 20 • 4:00 AM • 4 spots • 18 holes
-                </Text>
+                  <View
+                    style={
+                      {
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                      }
+                    }
+                  >
+                    <Text
+                      allowFontScaling={false}
+                      selectable={false}
+                      style={
+                        [
+                          {
+                            "color": "#003a37",
+                            "fontSize": 15,
+                          },
+                          {
+                            "marginRight": 4,
+                          },
+                          {
+                            "fontFamily": "FontAwesome5Free-Regular",
+                            "fontStyle": "normal",
+                            "fontWeight": "normal",
+                          },
+                          {
+                            "fontWeight": "400",
+                          },
+                        ]
+                      }
+                    >
+                      
+                    </Text>
+                    <Text
+                      style={
+                        {
+                          "color": "#003a37",
+                          "fontFamily": "Rubik-Light",
+                          "fontSize": 16,
+                        }
+                      }
+                    >
+                      18
+                    </Text>
+                  </View>
+                  <View
+                    style={
+                      {
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                      }
+                    }
+                  >
+                    <Text
+                      allowFontScaling={false}
+                      selectable={false}
+                      style={
+                        [
+                          {
+                            "color": "#003a37",
+                            "fontSize": 15,
+                          },
+                          {
+                            "marginRight": 4,
+                          },
+                          {
+                            "fontFamily": "FontAwesome5Free-Regular",
+                            "fontStyle": "normal",
+                            "fontWeight": "normal",
+                          },
+                          {
+                            "fontWeight": "400",
+                          },
+                        ]
+                      }
+                    >
+                      
+                    </Text>
+                    <Text
+                      style={
+                        {
+                          "color": "#003a37",
+                          "fontFamily": "Rubik-Light",
+                          "fontSize": 16,
+                        }
+                      }
+                    >
+                      1-4
+                    </Text>
+                  </View>
+                  <View
+                    style={
+                      {
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                      }
+                    }
+                  >
+                    <Text
+                      allowFontScaling={false}
+                      selectable={false}
+                      style={
+                        [
+                          {
+                            "color": "#003a37",
+                            "fontSize": 15,
+                          },
+                          {
+                            "marginRight": 4,
+                          },
+                          {
+                            "fontFamily": "FontAwesome5Free-Solid",
+                            "fontStyle": "normal",
+                            "fontWeight": "normal",
+                          },
+                          {
+                            "fontWeight": "700",
+                          },
+                        ]
+                      }
+                    >
+                      
+                    </Text>
+                    <Text
+                      style={
+                        {
+                          "color": "#003a37",
+                          "fontFamily": "Rubik-Light",
+                          "fontSize": 16,
+                        }
+                      }
+                    >
+                      Front
+                    </Text>
+                  </View>
+                </View>
               </View>
-              <Text
+              <View
                 style={
-                  [
-                    {
-                      "textAlign": "left",
-                    },
-                    {
-                      "color": "rgba(28, 27, 31, 1)",
-                      "fontFamily": "System",
-                      "fontWeight": "400",
-                      "letterSpacing": 0,
-                    },
-                    {
-                      "writingDirection": "ltr",
-                    },
-                    [
-                      {
-                        "alignSelf": "center",
-                        "fontSize": 16,
-                        "fontWeight": "bold",
-                      },
-                      {
-                        "color": "#000000",
-                      },
-                    ],
-                  ]
+                  {
+                    "alignItems": "center",
+                    "height": 52,
+                    "justifyContent": "center",
+                    "position": "absolute",
+                    "right": 16,
+                    "top": -2,
+                    "width": 40,
+                  }
                 }
               >
-                $150.00
-              </Text>
+                <View
+                  style={
+                    {
+                      "backgroundColor": "rgba(172, 238, 198, 0.5)",
+                      "borderBottomLeftRadius": 6,
+                      "borderBottomRightRadius": 6,
+                      "bottom": 0,
+                      "left": 0,
+                      "position": "absolute",
+                      "right": 0,
+                      "top": 0,
+                    }
+                  }
+                />
+                <Text
+                  style={
+                    {
+                      "color": "#2bb260",
+                      "fontFamily": "Rubik-Bold",
+                      "fontSize": 16,
+                      "marginTop": 8,
+                      "textAlign": "center",
+                    }
+                  }
+                >
+                  $150
+                </Text>
+                <Text
+                  style={
+                    {
+                      "color": "#2bb260",
+                      "fontFamily": "Rubik-Light",
+                      "fontSize": 9,
+                      "letterSpacing": -0.2,
+                      "marginTop": 2,
+                      "textAlign": "center",
+                    }
+                  }
+                >
+                  / player
+                </Text>
+              </View>
             </View>
           </View>
-        </View>
-        <View
-          onFocusCapture={[Function]}
-          onLayout={[Function]}
-          style={null}
-        >
           <View
-            accessibilityState={
-              {
-                "busy": undefined,
-                "checked": undefined,
-                "disabled": true,
-                "expanded": undefined,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
-            collapsable={false}
-            focusable={true}
-            onBlur={[Function]}
-            onClick={[Function]}
-            onFocus={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              [
-                false,
-                [
-                  {
-                    "paddingRight": 24,
-                    "paddingVertical": 8,
-                  },
-                  {
-                    "backgroundColor": "white",
-                    "borderRadius": 8,
-                    "elevation": 2,
-                    "marginBottom": 8,
-                  },
-                ],
-              ]
-            }
+            onFocusCapture={[Function]}
+            onLayout={[Function]}
+            style={null}
           >
             <View
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
               style={
-                [
-                  {
-                    "flexDirection": "row",
-                    "marginVertical": 6,
-                    "width": "100%",
+                {
+                  "backgroundColor": "#ffffff",
+                  "borderRadius": 12,
+                  "elevation": 8,
+                  "flexDirection": "row",
+                  "height": 100,
+                  "marginBottom": 16,
+                  "opacity": 1,
+                  "overflow": "hidden",
+                  "position": "relative",
+                  "shadowColor": "#000",
+                  "shadowOffset": {
+                    "height": 4,
+                    "width": 0,
                   },
-                  undefined,
-                ]
+                  "shadowOpacity": 0.25,
+                  "shadowRadius": 6,
+                  "width": 718,
+                }
               }
             >
               <View
-                pointerEvents="box-none"
                 style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "justifyContent": "center",
-                    },
-                    {
-                      "alignSelf": "center",
-                      "marginLeft": 16,
-                      "marginRight": 0,
-                    },
-                  ]
+                  {
+                    "backgroundColor": "#92F882",
+                    "borderRadius": 3,
+                    "height": 6,
+                    "left": 8,
+                    "position": "absolute",
+                    "top": 8,
+                    "width": 6,
+                    "zIndex": 10,
+                  }
+                }
+              />
+              <View
+                style={
+                  {
+                    "height": 100,
+                    "overflow": "hidden",
+                    "position": "relative",
+                    "width": 96,
+                  }
                 }
               >
-                <Text
-                  accessibilityElementsHidden={true}
-                  allowFontScaling={false}
-                  importantForAccessibility="no-hide-descendants"
-                  pointerEvents="none"
-                  selectable={false}
+                <Image
+                  resizeMode="cover"
+                  source={
+                    {
+                      "uri": "https://images.unsplash.com/photo-1535131749006-b7f58c99034b?w=200&h=200&fit=crop",
+                    }
+                  }
                   style={
-                    [
-                      {
-                        "color": "rgba(73, 69, 79, 1)",
-                        "fontSize": 24,
-                      },
-                      [
-                        {
-                          "lineHeight": 24,
-                          "transform": [
-                            {
-                              "scaleX": 1,
-                            },
-                          ],
-                        },
-                        {
-                          "backgroundColor": "transparent",
-                        },
-                      ],
-                      {
-                        "fontFamily": "material-community",
-                        "fontStyle": "normal",
-                        "fontWeight": "normal",
-                      },
-                      {},
-                    ]
+                    {
+                      "height": 108,
+                      "left": -13,
+                      "position": "absolute",
+                      "top": -3,
+                      "width": 210,
+                    }
+                  }
+                />
+                <View
+                  style={
+                    {
+                      "backgroundColor": "rgba(173, 173, 173, 0.4)",
+                      "bottom": 0,
+                      "left": 0,
+                      "position": "absolute",
+                      "right": 0,
+                      "top": 0,
+                    }
+                  }
+                />
+                <Text
+                  style={
+                    {
+                      "bottom": 0,
+                      "color": "#ffffff",
+                      "fontFamily": "Rubik-Bold",
+                      "fontSize": 28,
+                      "left": 0,
+                      "lineHeight": 28,
+                      "paddingTop": 36,
+                      "position": "absolute",
+                      "right": 0,
+                      "textAlign": "center",
+                      "textAlignVertical": "center",
+                      "top": 0,
+                    }
                   }
                 >
-                  󰠣
+                  08:30
                 </Text>
               </View>
               <View
                 style={
-                  [
-                    {
-                      "paddingLeft": 16,
-                    },
-                    {
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "justifyContent": "center",
-                    },
-                    undefined,
-                  ]
+                  {
+                    "flex": 1,
+                    "paddingLeft": 22,
+                    "paddingRight": 16,
+                    "paddingTop": 16,
+                  }
                 }
-                testID="undefined-content"
               >
                 <Text
-                  numberOfLines={1}
-                  selectable={false}
                   style={
-                    [
-                      {
-                        "textAlign": "left",
-                      },
-                      {
-                        "color": "rgba(28, 27, 31, 1)",
-                        "fontFamily": "System",
-                        "fontWeight": "400",
-                        "letterSpacing": 0,
-                      },
-                      {
-                        "writingDirection": "ltr",
-                      },
-                      [
-                        {
-                          "fontSize": 16,
-                        },
-                        {
-                          "color": "rgba(28, 27, 31, 1)",
-                        },
-                        undefined,
-                      ],
-                    ]
+                    {
+                      "color": "#003a37",
+                      "fontFamily": "Rubik-Medium",
+                      "fontSize": 20,
+                      "marginBottom": 8,
+                    }
                   }
                 >
                   Augusta National
                 </Text>
-                <Text
-                  numberOfLines={2}
-                  onTextLayout={[Function]}
-                  selectable={false}
+                <View
                   style={
-                    [
-                      {
-                        "textAlign": "left",
-                      },
-                      {
-                        "color": "rgba(28, 27, 31, 1)",
-                        "fontFamily": "System",
-                        "fontWeight": "400",
-                        "letterSpacing": 0,
-                      },
-                      {
-                        "writingDirection": "ltr",
-                      },
-                      [
-                        {
-                          "fontSize": 14,
-                        },
-                        {
-                          "color": "rgba(73, 69, 79, 1)",
-                        },
-                        undefined,
-                      ],
-                    ]
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                      "gap": 12,
+                    }
                   }
                 >
-                  Thu, Mar 21 • 8:30 AM • 2 spots • 18 holes
-                </Text>
+                  <View
+                    style={
+                      {
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                      }
+                    }
+                  >
+                    <Text
+                      allowFontScaling={false}
+                      selectable={false}
+                      style={
+                        [
+                          {
+                            "color": "#003a37",
+                            "fontSize": 15,
+                          },
+                          {
+                            "marginRight": 4,
+                          },
+                          {
+                            "fontFamily": "FontAwesome5Free-Regular",
+                            "fontStyle": "normal",
+                            "fontWeight": "normal",
+                          },
+                          {
+                            "fontWeight": "400",
+                          },
+                        ]
+                      }
+                    >
+                      
+                    </Text>
+                    <Text
+                      style={
+                        {
+                          "color": "#003a37",
+                          "fontFamily": "Rubik-Light",
+                          "fontSize": 16,
+                        }
+                      }
+                    >
+                      18
+                    </Text>
+                  </View>
+                  <View
+                    style={
+                      {
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                      }
+                    }
+                  >
+                    <Text
+                      allowFontScaling={false}
+                      selectable={false}
+                      style={
+                        [
+                          {
+                            "color": "#003a37",
+                            "fontSize": 15,
+                          },
+                          {
+                            "marginRight": 4,
+                          },
+                          {
+                            "fontFamily": "FontAwesome5Free-Regular",
+                            "fontStyle": "normal",
+                            "fontWeight": "normal",
+                          },
+                          {
+                            "fontWeight": "400",
+                          },
+                        ]
+                      }
+                    >
+                      
+                    </Text>
+                    <Text
+                      style={
+                        {
+                          "color": "#003a37",
+                          "fontFamily": "Rubik-Light",
+                          "fontSize": 16,
+                        }
+                      }
+                    >
+                      1-2
+                    </Text>
+                  </View>
+                  <View
+                    style={
+                      {
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                      }
+                    }
+                  >
+                    <Text
+                      allowFontScaling={false}
+                      selectable={false}
+                      style={
+                        [
+                          {
+                            "color": "#003a37",
+                            "fontSize": 15,
+                          },
+                          {
+                            "marginRight": 4,
+                          },
+                          {
+                            "fontFamily": "FontAwesome5Free-Solid",
+                            "fontStyle": "normal",
+                            "fontWeight": "normal",
+                          },
+                          {
+                            "fontWeight": "700",
+                          },
+                        ]
+                      }
+                    >
+                      
+                    </Text>
+                    <Text
+                      style={
+                        {
+                          "color": "#003a37",
+                          "fontFamily": "Rubik-Light",
+                          "fontSize": 16,
+                        }
+                      }
+                    >
+                      Front
+                    </Text>
+                  </View>
+                </View>
               </View>
-              <Text
+              <View
                 style={
-                  [
-                    {
-                      "textAlign": "left",
-                    },
-                    {
-                      "color": "rgba(28, 27, 31, 1)",
-                      "fontFamily": "System",
-                      "fontWeight": "400",
-                      "letterSpacing": 0,
-                    },
-                    {
-                      "writingDirection": "ltr",
-                    },
-                    [
-                      {
-                        "alignSelf": "center",
-                        "fontSize": 16,
-                        "fontWeight": "bold",
-                      },
-                      {
-                        "color": "#000000",
-                      },
-                    ],
-                  ]
+                  {
+                    "alignItems": "center",
+                    "height": 52,
+                    "justifyContent": "center",
+                    "position": "absolute",
+                    "right": 16,
+                    "top": -2,
+                    "width": 40,
+                  }
                 }
               >
-                $200.00
-              </Text>
+                <View
+                  style={
+                    {
+                      "backgroundColor": "rgba(172, 238, 198, 0.5)",
+                      "borderBottomLeftRadius": 6,
+                      "borderBottomRightRadius": 6,
+                      "bottom": 0,
+                      "left": 0,
+                      "position": "absolute",
+                      "right": 0,
+                      "top": 0,
+                    }
+                  }
+                />
+                <Text
+                  style={
+                    {
+                      "color": "#2bb260",
+                      "fontFamily": "Rubik-Bold",
+                      "fontSize": 16,
+                      "marginTop": 8,
+                      "textAlign": "center",
+                    }
+                  }
+                >
+                  $200
+                </Text>
+                <Text
+                  style={
+                    {
+                      "color": "#2bb260",
+                      "fontFamily": "Rubik-Light",
+                      "fontSize": 9,
+                      "letterSpacing": -0.2,
+                      "marginTop": 2,
+                      "textAlign": "center",
+                    }
+                  }
+                >
+                  / player
+                </Text>
+              </View>
             </View>
           </View>
-        </View>
-        <View
-          onFocusCapture={[Function]}
-          onLayout={[Function]}
-          style={null}
-        >
           <View
-            accessibilityState={
-              {
-                "busy": undefined,
-                "checked": undefined,
-                "disabled": true,
-                "expanded": undefined,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
-            collapsable={false}
-            focusable={true}
-            onBlur={[Function]}
-            onClick={[Function]}
-            onFocus={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              [
-                false,
-                [
-                  {
-                    "paddingRight": 24,
-                    "paddingVertical": 8,
-                  },
-                  {
-                    "backgroundColor": "white",
-                    "borderRadius": 8,
-                    "elevation": 2,
-                    "marginBottom": 8,
-                  },
-                ],
-              ]
-            }
+            onFocusCapture={[Function]}
+            onLayout={[Function]}
+            style={null}
           >
             <View
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
               style={
-                [
-                  {
-                    "flexDirection": "row",
-                    "marginVertical": 6,
-                    "width": "100%",
+                {
+                  "backgroundColor": "#ffffff",
+                  "borderRadius": 12,
+                  "elevation": 8,
+                  "flexDirection": "row",
+                  "height": 100,
+                  "marginBottom": 16,
+                  "opacity": 1,
+                  "overflow": "hidden",
+                  "position": "relative",
+                  "shadowColor": "#000",
+                  "shadowOffset": {
+                    "height": 4,
+                    "width": 0,
                   },
-                  undefined,
-                ]
+                  "shadowOpacity": 0.25,
+                  "shadowRadius": 6,
+                  "width": 718,
+                }
               }
             >
               <View
-                pointerEvents="box-none"
                 style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "justifyContent": "center",
-                    },
-                    {
-                      "alignSelf": "center",
-                      "marginLeft": 16,
-                      "marginRight": 0,
-                    },
-                  ]
+                  {
+                    "backgroundColor": "#92F882",
+                    "borderRadius": 3,
+                    "height": 6,
+                    "left": 8,
+                    "position": "absolute",
+                    "top": 8,
+                    "width": 6,
+                    "zIndex": 10,
+                  }
+                }
+              />
+              <View
+                style={
+                  {
+                    "height": 100,
+                    "overflow": "hidden",
+                    "position": "relative",
+                    "width": 96,
+                  }
                 }
               >
-                <Text
-                  accessibilityElementsHidden={true}
-                  allowFontScaling={false}
-                  importantForAccessibility="no-hide-descendants"
-                  pointerEvents="none"
-                  selectable={false}
+                <Image
+                  resizeMode="cover"
+                  source={
+                    {
+                      "uri": "https://images.unsplash.com/photo-1535131749006-b7f58c99034b?w=200&h=200&fit=crop",
+                    }
+                  }
                   style={
-                    [
-                      {
-                        "color": "rgba(73, 69, 79, 1)",
-                        "fontSize": 24,
-                      },
-                      [
-                        {
-                          "lineHeight": 24,
-                          "transform": [
-                            {
-                              "scaleX": 1,
-                            },
-                          ],
-                        },
-                        {
-                          "backgroundColor": "transparent",
-                        },
-                      ],
-                      {
-                        "fontFamily": "material-community",
-                        "fontStyle": "normal",
-                        "fontWeight": "normal",
-                      },
-                      {},
-                    ]
+                    {
+                      "height": 108,
+                      "left": -13,
+                      "position": "absolute",
+                      "top": -3,
+                      "width": 210,
+                    }
+                  }
+                />
+                <View
+                  style={
+                    {
+                      "backgroundColor": "rgba(173, 173, 173, 0.4)",
+                      "bottom": 0,
+                      "left": 0,
+                      "position": "absolute",
+                      "right": 0,
+                      "top": 0,
+                    }
+                  }
+                />
+                <Text
+                  style={
+                    {
+                      "bottom": 0,
+                      "color": "#ffffff",
+                      "fontFamily": "Rubik-Bold",
+                      "fontSize": 28,
+                      "left": 0,
+                      "lineHeight": 28,
+                      "paddingTop": 36,
+                      "position": "absolute",
+                      "right": 0,
+                      "textAlign": "center",
+                      "textAlignVertical": "center",
+                      "top": 0,
+                    }
                   }
                 >
-                  󰠣
+                  03:15
                 </Text>
               </View>
               <View
                 style={
-                  [
-                    {
-                      "paddingLeft": 16,
-                    },
-                    {
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "justifyContent": "center",
-                    },
-                    undefined,
-                  ]
+                  {
+                    "flex": 1,
+                    "paddingLeft": 22,
+                    "paddingRight": 16,
+                    "paddingTop": 16,
+                  }
                 }
-                testID="undefined-content"
               >
                 <Text
-                  numberOfLines={1}
-                  selectable={false}
                   style={
-                    [
-                      {
-                        "textAlign": "left",
-                      },
-                      {
-                        "color": "rgba(28, 27, 31, 1)",
-                        "fontFamily": "System",
-                        "fontWeight": "400",
-                        "letterSpacing": 0,
-                      },
-                      {
-                        "writingDirection": "ltr",
-                      },
-                      [
-                        {
-                          "fontSize": 16,
-                        },
-                        {
-                          "color": "rgba(28, 27, 31, 1)",
-                        },
-                        undefined,
-                      ],
-                    ]
+                    {
+                      "color": "#003a37",
+                      "fontFamily": "Rubik-Medium",
+                      "fontSize": 20,
+                      "marginBottom": 8,
+                    }
                   }
                 >
                   St Andrews Links
                 </Text>
-                <Text
-                  numberOfLines={2}
-                  onTextLayout={[Function]}
-                  selectable={false}
+                <View
                   style={
-                    [
-                      {
-                        "textAlign": "left",
-                      },
-                      {
-                        "color": "rgba(28, 27, 31, 1)",
-                        "fontFamily": "System",
-                        "fontWeight": "400",
-                        "letterSpacing": 0,
-                      },
-                      {
-                        "writingDirection": "ltr",
-                      },
-                      [
-                        {
-                          "fontSize": 14,
-                        },
-                        {
-                          "color": "rgba(73, 69, 79, 1)",
-                        },
-                        undefined,
-                      ],
-                    ]
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                      "gap": 12,
+                    }
                   }
                 >
-                  Fri, Mar 22 • 3:15 AM • 1 spots • 9 holes
-                </Text>
+                  <View
+                    style={
+                      {
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                      }
+                    }
+                  >
+                    <Text
+                      allowFontScaling={false}
+                      selectable={false}
+                      style={
+                        [
+                          {
+                            "color": "#003a37",
+                            "fontSize": 15,
+                          },
+                          {
+                            "marginRight": 4,
+                          },
+                          {
+                            "fontFamily": "FontAwesome5Free-Regular",
+                            "fontStyle": "normal",
+                            "fontWeight": "normal",
+                          },
+                          {
+                            "fontWeight": "400",
+                          },
+                        ]
+                      }
+                    >
+                      
+                    </Text>
+                    <Text
+                      style={
+                        {
+                          "color": "#003a37",
+                          "fontFamily": "Rubik-Light",
+                          "fontSize": 16,
+                        }
+                      }
+                    >
+                      9
+                    </Text>
+                  </View>
+                  <View
+                    style={
+                      {
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                      }
+                    }
+                  >
+                    <Text
+                      allowFontScaling={false}
+                      selectable={false}
+                      style={
+                        [
+                          {
+                            "color": "#003a37",
+                            "fontSize": 15,
+                          },
+                          {
+                            "marginRight": 4,
+                          },
+                          {
+                            "fontFamily": "FontAwesome5Free-Regular",
+                            "fontStyle": "normal",
+                            "fontWeight": "normal",
+                          },
+                          {
+                            "fontWeight": "400",
+                          },
+                        ]
+                      }
+                    >
+                      
+                    </Text>
+                    <Text
+                      style={
+                        {
+                          "color": "#003a37",
+                          "fontFamily": "Rubik-Light",
+                          "fontSize": 16,
+                        }
+                      }
+                    >
+                      1-1
+                    </Text>
+                  </View>
+                  <View
+                    style={
+                      {
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                      }
+                    }
+                  >
+                    <Text
+                      allowFontScaling={false}
+                      selectable={false}
+                      style={
+                        [
+                          {
+                            "color": "#003a37",
+                            "fontSize": 15,
+                          },
+                          {
+                            "marginRight": 4,
+                          },
+                          {
+                            "fontFamily": "FontAwesome5Free-Solid",
+                            "fontStyle": "normal",
+                            "fontWeight": "normal",
+                          },
+                          {
+                            "fontWeight": "700",
+                          },
+                        ]
+                      }
+                    >
+                      
+                    </Text>
+                    <Text
+                      style={
+                        {
+                          "color": "#003a37",
+                          "fontFamily": "Rubik-Light",
+                          "fontSize": 16,
+                        }
+                      }
+                    >
+                      Front
+                    </Text>
+                  </View>
+                </View>
               </View>
-              <Text
+              <View
                 style={
-                  [
-                    {
-                      "textAlign": "left",
-                    },
-                    {
-                      "color": "rgba(28, 27, 31, 1)",
-                      "fontFamily": "System",
-                      "fontWeight": "400",
-                      "letterSpacing": 0,
-                    },
-                    {
-                      "writingDirection": "ltr",
-                    },
-                    [
-                      {
-                        "alignSelf": "center",
-                        "fontSize": 16,
-                        "fontWeight": "bold",
-                      },
-                      {
-                        "color": "#000000",
-                      },
-                    ],
-                  ]
+                  {
+                    "alignItems": "center",
+                    "height": 52,
+                    "justifyContent": "center",
+                    "position": "absolute",
+                    "right": 16,
+                    "top": -2,
+                    "width": 40,
+                  }
                 }
               >
-                £175.00
-              </Text>
+                <View
+                  style={
+                    {
+                      "backgroundColor": "rgba(172, 238, 198, 0.5)",
+                      "borderBottomLeftRadius": 6,
+                      "borderBottomRightRadius": 6,
+                      "bottom": 0,
+                      "left": 0,
+                      "position": "absolute",
+                      "right": 0,
+                      "top": 0,
+                    }
+                  }
+                />
+                <Text
+                  style={
+                    {
+                      "color": "#2bb260",
+                      "fontFamily": "Rubik-Bold",
+                      "fontSize": 16,
+                      "marginTop": 8,
+                      "textAlign": "center",
+                    }
+                  }
+                >
+                  £175
+                </Text>
+                <Text
+                  style={
+                    {
+                      "color": "#2bb260",
+                      "fontFamily": "Rubik-Light",
+                      "fontSize": 9,
+                      "letterSpacing": -0.2,
+                      "marginTop": 2,
+                      "textAlign": "center",
+                    }
+                  }
+                >
+                  / player
+                </Text>
+              </View>
             </View>
           </View>
         </View>
-      </View>
-    </RCTScrollView>
+      </RCTScrollView>
+    </View>
   </View>
 </RNCSafeAreaProvider>
 `;

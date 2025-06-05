@@ -4,8 +4,24 @@ import * as useTeeTimesModule from '../hooks/useTeeTimes';
 import { TeeTimesContainer } from '../components/TeeTimesContainer';
 
 jest.mock('../hooks/useTeeTimes');
+jest.mock('../hooks/useApiKey');
+
+// Mock FontLoader to avoid async issues
+jest.mock('../components/FontLoader', () => {
+  return ({ children }: { children: React.ReactNode }) => children;
+});
 
 describe('TeeTimesContainer', () => {
+  beforeEach(() => {
+    // Mock useApiKey for all tests
+    require('../hooks/useApiKey').useApiKey = jest.fn().mockReturnValue({
+      apiKey: 'test-api-key',
+      loading: false,
+      error: null,
+      handle401: jest.fn()
+    });
+  });
+
   afterEach(() => {
     jest.clearAllMocks();
   });

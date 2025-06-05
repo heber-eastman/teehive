@@ -2,7 +2,7 @@ import React from 'react';
 import { View, StyleSheet, ScrollView } from 'react-native';
 import { ActivityIndicator, Text } from 'react-native-paper';
 import { useTeeTimes } from '../hooks/useTeeTimes';
-import { TeeTimesList } from '../screens/TeeTimesList';
+import TeeTimesList from '../screens/TeeTimesList';
 
 export function TeeTimesContainer() {
   const { teeTimes, isLoading, error, refetch } = useTeeTimes();
@@ -45,7 +45,7 @@ export function TeeTimesContainer() {
     );
   }
 
-  return <TeeTimesList teeTimes={teeTimes} onRefresh={refetch} />;
+  return <TeeTimesList />;
 }
 
 const styles = StyleSheet.create({
