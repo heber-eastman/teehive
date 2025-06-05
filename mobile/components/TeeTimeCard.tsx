@@ -12,14 +12,12 @@ interface TeeTimeCardProps {
 const { width: screenWidth } = Dimensions.get('window');
 
 const TeeTimeCard: React.FC<TeeTimeCardProps> = ({ teeTime, onPress }) => {
-  // Format time to match Figma (24-hour format)
+  // Format time to match Figma (24-hour format, UTC)
   const formatTime = (dateTime: string) => {
     const date = new Date(dateTime);
-    return date.toLocaleTimeString('en-US', { 
-      hour: '2-digit', 
-      minute: '2-digit',
-      hour12: false 
-    });
+    const hours = date.getUTCHours().toString().padStart(2, '0');
+    const minutes = date.getUTCMinutes().toString().padStart(2, '0');
+    return `${hours}:${minutes}`;
   };
 
   // Format price

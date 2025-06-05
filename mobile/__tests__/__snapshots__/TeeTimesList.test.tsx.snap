@@ -219,7 +219,7 @@ exports[`TeeTimesList renders correctly with tee times 1`] = `
                     }
                   }
                 >
-                  04:00
+                  10:00
                 </Text>
               </View>
               <View
@@ -573,7 +573,7 @@ exports[`TeeTimesList renders correctly with tee times 1`] = `
                     }
                   }
                 >
-                  08:30
+                  14:30
                 </Text>
               </View>
               <View
@@ -927,7 +927,7 @@ exports[`TeeTimesList renders correctly with tee times 1`] = `
                     }
                   }
                 >
-                  03:15
+                  09:15
                 </Text>
               </View>
               <View
